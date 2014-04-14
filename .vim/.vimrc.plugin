@@ -1,0 +1,871 @@
+" Unite.vim {{{
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    s [unite]
+
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+
+" 全部乗せ
+nnoremap <silent> [unite]f  :<C-u>Unite -no-split -buffer-name=files buffer file_mru bookmark file file/new<CR>
+" ファイル一覧
+nnoremap <silent> [unite]F  :<C-u>Unite -no-split -buffer-name=files file file/new<CR>
+" バッファ一覧
+nnoremap <silent> [unite]b  :<C-u>Unite -no-split buffer<CR>
+" 常用セット
+nnoremap <silent> [unite]u  :<C-u>Unite -no-split buffer file_mru<CR>
+" ブックマーク
+nnoremap <silent> [unite]l  :<C-u>Unite -no-split bookmark<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
+" 現在のバッファのカレントディレクトリからファイル一覧
+nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -no-split file file/new<CR>
+" snippet一覧
+nnoremap <silent> [unite]s  :<C-u>Unite neosnippet<CR>
+" filetype一覧
+nnoremap <silent> [unite]`  :<C-u>Unite filetype<CR>
+"履歴を表示
+nnoremap <silent> [unite]y  :<C-u>Unite yankround<CR>
+"QuickRunの設定
+nnoremap <silent> [unite]r  :<C-u>Unite quickrun_config<CR>
+"マッピングを表示
+" nnoremap <silent> [unite]h  :<C-u>Unite -no-split output:map|map!|lmap<CR>
+"grep
+nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
+"Sendto
+nnoremap <silent> [unite]t :<C-u>Unite sendto<CR>
+"Codic
+nnoremap <silent> [unite]c :<C-u>Unite -no-split codic<CR>
+"twitter
+nnoremap <silent> [unite],t :<C-u>Unite -no-split tweetvim<CR>
+"search
+nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
+nnoremap <silent> / :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
+nnoremap ? /\v
+" unite-grepのバックエンドをagに切り替える
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
+" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+let g:unite_source_history_yank_enable =1
+let g:yankring_zap_keys = ""
+" from basyura/unite-rails
+nnoremap <silent> [unite]rm  :<C-u>Unite -no-split rails/model<CR>
+nnoremap <silent> [unite]rc  :<C-u>Unite -no-split rails/controller<CR>
+nnoremap <silent> [unite]rv  :<C-u>Unite -no-split rails/view<CR>
+nnoremap <silent> [unite]rl  :<C-u>Unite -no-split rails/lib<CR>
+nnoremap <silent> [unite]rj  :<C-u>Unite -no-split rails/javascript<CR>
+nnoremap <silent> [unite]rs  :<C-u>Unite -no-split rails/spec<CR>
+
+let g:vimfiler_sendto = {
+\  'zip' : 'zip -r %F.zip %*',
+\  'unzip' : 'unzip %f',
+\  'firefox' : 'firefox %f',
+\  'chrome' : 'open -a Google\ Chrome.app %f',
+\  'finder' : 'open .'
+\ }
+
+" tabvsplit
+let s:unite_action = {
+\   'is_selectable': 1,
+\ }
+
+function! s:unite_action.func(candidates)  " {{{
+  tabnew `=a:candidates[0].action__path`
+  for c in a:candidates[1 :]
+    vsplit `=c.action__path`
+  endfor
+endfunction  " }}}
+
+call unite#custom_action('openable', 'tabvsplit', s:unite_action)
+unlet! s:unite_action
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " Overwrite settings.
+
+  " ESCキーを2回押すと終了する
+  nmap <buffer> <ESC>      <Plug>(unite_exit)
+  nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
+  nmap <buffer> q <Plug>(unite_exit)
+  imap <buffer> jj      <Plug>(unite_insert_leave)
+  nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
+  imap <buffer> <C-h>     <Plug>(unite_delete_backward_path)
+
+  " Start insert.
+  let g:unite_enable_start_insert = 1
+
+  " ウィンドウを分割して開く
+  nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('split')
+  inoremap <silent> <buffer> <expr> <C-l> unite#do_action('split')
+
+  " ウィンドウを縦に分割して開く
+  nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+  inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+
+  " vimfilerで開く
+  nnoremap <silent> <buffer> <expr> <C-e> unite#do_action('vimfiler')
+  inoremap <silent> <buffer> <expr> <C-e> unite#do_action('vimfiler')
+  " vimshellで開く
+  nnoremap <silent> <buffer> <expr> <C-s> unite#do_action('tabvimshell')
+  inoremap <silent> <buffer> <expr> <C-s> unite#do_action('tabvimshell')
+endfunction
+
+let g:unite_source_file_mru_limit = 200
+
+function! UniteRefDoc()
+    if &filetype =~ 'perl'
+        Unite ref/perldoc
+    elseif &filetype =~ 'php'
+        Unite ref/phpmanual
+    elseif &filetype =~ 'javascirpt'
+        Unite ref/javascript ref/jquery
+    elseif &filetype =~ 'coffee'
+        Unite ref/javascript ref/jquery
+    elseif &filetype =~ 'ruby'
+        Unite ref/ri
+    endif
+endfunction
+nnoremap <silent> [unite]K :<C-u>call UniteRefDoc()<CR> 
+" }}}
+
+" VimFiler {{{
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_external_copy_directory_command = 'cp -r $src $dest'
+let g:vimfiler_external_copy_file_command = 'cp $src $dest'
+let g:vimfiler_external_delete_command = 'rm -r $srcs'
+let g:vimfiler_external_move_command = 'mv $srcs $dest'
+" let g:vimfiler_edit_action = 'tabopen'
+" Enable file operation commands.
+let g:vimfiler_safe_mode_by_default = 0
+
+command! -nargs=? -complete=file VimFilerTree call s:vimfiler_tree_launch(<f-args>)
+
+  let s:org_scrolloff=-1
+  function! s:noscrolloff_leftmouse()
+    if s:org_scrolloff < 0
+      let s:org_scrolloff = &scrolloff
+    endif
+    let &scrolloff = 0
+    exe 'normal!' "\<LeftMouse>"
+    " let &scrolloff = org_scrolloff
+  endfunction
+  function! s:restore_noscrolloff()
+    if s:org_scrolloff < 0
+      return
+    endif
+    let &scrolloff = s:org_scrolloff
+    let s:org_scrolloff = -1
+  endfunction
+  autocmd CursorMoved * call s:restore_noscrolloff()
+
+function! s:vimfiler_tree_launch(...)
+  let fpath = a:0 > 0 ? a:1 : getcwd()
+  execute 'VimFiler -toggle -split -direction=topleft -buffer-name=ftree -simple -winwidth=40 file:' . fpath
+endfunction
+
+function! s:vimfiler_smart_tree_h()
+  let file = vimfiler#get_file()
+  let cmd = "\<Plug>(vimfiler_smart_h)"
+  if !empty(file)
+    if file.vimfiler__is_opened
+      let cmd = "\<Plug>(vimfiler_expand_tree)"
+    elseif file.vimfiler__nest_level > 0
+      let nest_level = file.vimfiler__nest_level
+      while 1
+        exe 'normal!' 'k'
+        let file = vimfiler#get_file()
+        if empty(file) || file.vimfiler__nest_level < nest_level
+          " let cmd = "\<Plug>(vimfiler_expand_tree)" | break
+          normal! ^
+          return
+        endif
+      endwhile
+    endif
+  endif
+  exe 'normal' cmd
+  normal! ^
+endfunction
+
+function! s:vimfiler_tree_edit(method)
+  " let file = vimfiler#get_file()
+  " if empty(file) || empty(a:method) | return | endif
+  " let path = file.action__path
+  " wincmd p
+  " execute a:method
+  " exe 'edit' path
+  if empty(a:method) | return | endif
+  let linenr = line('.')
+  let context = s:vimfiler_create_action_context(a:method, linenr)
+  wincmd p
+  " call vimfiler#mappings#do_action(a:method, linenr)
+  call context.execute()
+  unlet context
+endfunction
+
+function! s:vimfiler_smart_tree_l(method, ...)
+  let file = vimfiler#get_file()
+  if empty(file) 
+    if (a:0 > 0 && a:1 == 1)
+      exe 'normal' "\<Plug>(vimfiler_smart_h)"
+    endif
+    return
+  endif
+  let path = file.action__path
+  if file.vimfiler__is_directory
+    if (a:0 > 0 && a:1 == 2)
+      exe 'normal' "\<Plug>(vimfiler_smart_l)"
+    else
+      exe 'normal' "\<Plug>(vimfiler_expand_tree)"
+    endif
+    normal! ^
+    return
+  endif
+  call s:vimfiler_tree_edit(a:method)
+endfunction
+function! s:vimfiler_tree_tabopen()
+  let bnr = bufnr('%')
+  let linenr = line('.')
+  let context = s:vimfiler_create_action_context('tabopen', linenr)
+  call context.execute()
+  unlet context
+  silent! exe printf('vsplit +wincmd\ H\|wincmd\ l #%d', bnr)
+endfunction
+
+let s:vimfiler_context = {}
+function! s:vimfiler_context.new(...)
+  let dict = get(a:000, 0, {})
+  return extend(dict, self)
+endfunction
+
+function! s:vimfiler_context.execute()
+  call unite#mappings#do_action(self.action, self.files, {
+        \ 'vimfiler__current_directory' : self.current_dir,
+        \ })
+endfunction
+
+function! s:vimfiler_create_action_context(action, ...)
+  let cursor_linenr = get(a:000, 0, line('.'))
+  let vimfiler = vimfiler#get_current_vimfiler()
+  let marked_files = vimfiler#get_marked_files()
+  if empty(marked_files)
+    let marked_files = [ vimfiler#get_file(cursor_linenr) ]
+  endif
+
+  let context = s:vimfiler_context.new({
+        \ 'action' : a:action,
+        \ 'files' : marked_files,
+        \ 'current_dir' : vimfiler.current_dir,
+        \ })
+  return context
+endfunction
+
+function! s:vimfiler_my_settings()
+  " vimfilerで開く
+  nnoremap <silent> <buffer> <expr> <C-e> vimfiler#do_action('tabvimfiler')
+  inoremap <silent> <buffer> <expr> <C-e> vimfiler#do_action('tabvimfiler')
+  " vimshellで開く
+  nnoremap <silent> <buffer> <expr> <C-s> vimfiler#do_action('tabvimshell')
+  inoremap <silent> <buffer> <expr> <C-s> vimfiler#do_action('tabvimshell')
+  if exists('b:vimfiler')
+    if exists('b:vimfiler.context') && b:vimfiler.context.profile_name == 'ftree'
+      nnoremap <silent><buffer> e :call <SID>vimfiler_tree_edit('open')<CR>
+      nnoremap <silent><buffer> E :call <SID>vimfiler_tree_tabopen()<CR>
+      nnoremap <silent><buffer> l :call <SID>vimfiler_smart_tree_l('')<CR>
+      nnoremap <silent><buffer> <LeftMouse> <Esc>:set eventignore=all<CR>:call <SID>noscrolloff_leftmouse()<CR>:call <SID>vimfiler_smart_tree_l('', 1)<CR>:set eventignore=<CR>
+      nnoremap <silent><buffer> <2-LeftMouse> <Esc>:set eventignore=all<CR>:call <SID>noscrolloff_leftmouse()<CR>::set eventignore=<CR>:call <SID>vimfiler_smart_tree_l('open', 2)<CR>
+      nmap <buffer> L <Plug>(vimfiler_smart_l)
+      nnoremap <silent><buffer> h :call <SID>vimfiler_smart_tree_h()<CR>
+    endif
+  endif
+endfunction
+
+
+
+autocmd FileType vimfiler call s:vimfiler_my_settings()
+
+map <silent> <Leader>fi ::VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+map <silent> <Leader>ff ::VimFilerBufferDir<CR>
+" }}}
+
+" NeoCompate {{{
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+let g:neocomplete#sources#dictionary#dictionaries = {
+   \ 'default' : '',
+   \ 'javascript' : join([$HOME.'/./dict/javascript.dict',$HOME.'/./dict/nodejs.dict'],','),
+   \ 'coffee' : join([$HOME.'/./dict/nodejs.dict',$HOME.'/./dict/javascript.dict'],',')
+   \ }
+
+" }}}
+
+" NeoSnippet {{{
+
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
+" }}}
+
+" Fugitive.vim {{{
+
+nnoremap <Space>gd :<C-u>Gdiff<CR>
+nnoremap <silent> <Space>gs :<C-u>Gstatus<CR>
+nnoremap <Space>gl :<C-u>Glog<CR>
+nnoremap <Space>ga :<C-u>Gwrite<CR>
+nnoremap <Space>gr :<C-u>Gread<CR>
+nnoremap <Space>gc :<C-u>Gcommit<CR>
+nnoremap <Space>gC :<C-u>Git commit --amend<CR>
+nnoremap <Space>gp :<C-u>Git push<CR>
+nnoremap <Space>gb :<C-u>Gblame<CR>
+" }}}
+
+" endwise.vim {{{
+
+let g:endwise_no_mappings=1
+" }}}
+
+" surround.vim {{{
+
+
+let g:surround_custom_mapping = {}
+let g:surround_custom_mapping._ = {
+      \ 'p':  "<pre> \r </pre>",
+      \ 'w':  "%w(\r)",
+      \ }
+let g:surround_custom_mapping.help = {
+      \ 'p':  "> \r <",
+      \ }
+let g:surround_custom_mapping.ruby = {
+      \ '-':  "<% \r %>",
+      \ '=':  "<%= \r %>",
+      \ '9':  "(\r)",
+      \ '5':  "%(\r)",
+      \ '%':  "%(\r)",
+      \ 'w':  "%w(\r)",
+      \ '#':  "#{\r}",
+      \ '3':  "#{\r}",
+      \ 'e':  "begin \r end",
+      \ 'E':  "<<EOS \r EOS",
+      \ 'i':  "if \1if\1 \r end",
+      \ 'u':  "unless \1unless\1 \r end",
+      \ 'c':  "class \1class\1 \r end",
+      \ 'm':  "module \1module\1 \r end",
+      \ 'd':  "def \1def\1\2args\r..*\r(&)\2 \r end",
+      \ 'p':  "\1method\1 do \2args\r..*\r|&| \2\r end",
+      \ 'P':  "\1method\1 {\2args\r..*\r|&|\2 \r }",
+      \ }
+let g:surround_custom_mapping.javascript = {
+      \ 'f':  "function(){ \r }"
+      \ }
+let g:surround_custom_mapping.lua = {
+      \ 'f':  "function(){ \r }"
+      \ }
+let g:surround_custom_mapping.python = {
+      \ 'p':  "print( \r)",
+      \ '[':  "[\r]",
+      \ }
+" }}}
+
+" rails {{{
+
+let g:rails_default_file='config/database.yml'
+let g:rails_level = 4
+let g:rails_mappings=1
+let g:rails_modelines=0
+" let g:rails_some_option = 1
+" let g:rails_statusline = 1
+" let g:rails_subversion=0
+" let g:rails_syntax = 1
+" let g:rails_url='http://localhost:3000'
+" let g:rails_ctags_arguments='--languages=-javascript'
+" let g:rails_ctags_arguments = ''
+function! SetUpRailsSetting()
+  nnoremap <buffer><Space>r :R<CR>
+  nnoremap <buffer><Space>a :A<CR>
+  nnoremap <buffer><Space>m :Rmodel<Space>
+  nnoremap <buffer><Space>c :Rcontroller<Space>
+  nnoremap <buffer><Space>v :Rview<Space>
+  nnoremap <buffer><Space>p :Rpreview<CR>
+endfunction
+ 
+aug MyAutoCmd
+  au User Rails call SetUpRailsSetting()
+aug END
+ 
+aug RailsDictSetting
+  au!
+aug END
+" }}}
+
+" vimshell {{{
+
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+" let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+let g:vimshell_enable_smart_case = 1
+
+
+
+autocmd FileType vimshell
+\| call vimshell#altercmd#define('ll', 'ls -l')
+
+noremap <Leader>fs :VimShellBufferDir<CR>
+noremap <Leader>s :VimShellPop<CR>
+noremap <Leader>vsrc :VimShellInteractive rails console<CR>
+nmap <Leader>pry :VimShellInteractive pry<CR>
+" }}}
+
+" quickrun.vim {{{
+
+let g:quickrun_config = {}
+let g:quickrun_config._ = {
+  \ 'runner' : 'vimproc',
+  \ "runner/vimproc/updatetime" : 60,
+  \ 'vsplit': '',
+  \ "outputter/error/error" : "quickfix",
+  \ "outputter/error/success" : "buffer",
+  \ 'outputter/buffer/close_on_empty' : 1,
+  \ "hook/shabadoubi_touch_henshin/enable" : 1,
+  \ "hook/shabadoubi_touch_henshin/wait" : 20
+  \}
+let g:quickrun_config['javascript/mocha'] = {
+  \ 'command': 'mocha',
+  \ 'tempfile': '%{tempname()}.js'
+  \ }
+let g:quickrun_config['coffee/display'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
+let g:quickrun_config['coffee/mocha'] = {
+  \ 'command': 'mocha',
+  \ 'exec': [ "coffee -b -j __temp__.js -c %s ","mocha __temp__.js"],
+  \ 'hook/sweep/files': ["__temp__.js"]
+  \ }
+let g:quickrun_config['coffee/compile'] = {
+  \ 'command': 'coffee',
+  \ 'cmdopt': '-cb',
+  \ 'exec': '%c %o %s'
+  \ }
+let g:quickrun_config['markdown'] = {
+  \ 'outputter': 'browser'
+  \ }
+let g:quickrun_config['rspec/bundle'] = {
+  \ 'type': 'rspec/bundle',
+  \ 'command': "rspec",
+  \ 'cmdopt': "-l %{line('.')}",
+  \ 'exec': "bundle exec %c %o %s ",
+  \ 'outputter/buffer/filetype': 'rspec-result',
+  \ 'filetype': 'rspec-result'
+  \}
+let g:quickrun_config['rspec/normal'] = {
+  \ 'type': 'rspec/normal',
+  \ 'command': "rspec",
+  \ 'cmdopt': "-l %{line('.')}",
+  \ 'exec': '%c %o %s',
+  \ 'outputter/buffer/filetype': 'rspec-result',
+  \ 'filetype': 'rspec-result'
+  \}
+" phpunit
+let g:quickrun_config['phpunit'] = {
+  \ 'command': "phpunit",
+  \ 'cmdopt': "",
+  \ 'exec': '%c %o %s',
+  \ 'outputter': 'phpunit',
+  \ 'outputter/buffer/split': 'vertical 35',
+  \ 'outputter/phpunit/height': 3
+  \}
+nnoremap <Leader>rr :QuickRun<CR>
+" <C-c> で実行を強制終了させる
+" quickrun. が実行していない場合には <C-c> を呼び出す
+nnoremap <expr><silent> <C-c> quickrunkis_running() ?  quickrun#sweep_sessions() : "\<C-c>"
+autocmd BufReadPost *_spec.rb call RSpecQuickrun()
+
+" quickfix のエラー箇所を波線でハイライト
+execute "highlight qf_error_ucurl gui=undercurl guisp=Red"
+let g:hier_highlight_group_qf  = "qf_error_ucurl"
+"}}}
+
+" grep.vim {{{
+
+" 検索外のディレクトリ、ファイルパターン
+let Grep_Skip_Dirs = '.svn .git .hg'
+let Grep_Skip_Files = '*.bak *~'
+" }}}
+
+" taglist.vim {{{
+
+" 関数一覧
+set tags=tags
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+" let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags'
+"set tags+=~/.tags
+let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
+let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばを閉じる
+let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示
+let Tlist_Enable_Fold_Column = 1          " 折りたたみ
+let Tlist_Auto_Open = 1                   " 自動表示
+let Tlist_Auto_Update = 1
+let Tlist_WinWidth = 30
+map <silent> <Leader>tl :TlistToggle<CR>
+autocmd BufWritePost *.cpp :TlistUpdate
+" }}}
+
+" open-blowser.vim {{{
+
+" カーソル下のURLをブラウザで開く
+nmap <Leader>ob <Plug>(openbrowser-open)
+vmap <Leader>ob <Plug>(openbrowser-open)
+" カーソル下のキーワードをググる
+nnoremap <Leader>ok :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
+" }}}
+
+" errormarker.vim {{{
+
+" disable default shortcut mapping and re-define to <Leader>ec
+let g:errormarker_disablemappings = 1
+nmap <silent> <Leader>ec :ErrorAtCursor<CR>
+"gccのErrorとWarningを見分ける
+let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat 
+" }}}
+
+" Syntastic {{{
+
+" エラー行をsignで表示する
+let g:syntastic_enable_signs = 1
+" 可能ならhighligt表示する
+let g:syntastic_enable_highlighting = 1
+" 自動的に開いたり閉じたりする
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html'] }
+" }}}
+
+" easymotion {{{
+
+" ホームポジションに近いキーを使う
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+let g:EasyMotion_leader_key=";"
+" 1 ストローク選択を優先する
+let g:EasyMotion_grouping=1
+" カラー設定変更
+hi EasyMotionTarget ctermbg=none ctermfg=red
+hi EasyMotionShade  ctermbg=none ctermfg=blue
+
+
+" vim-blowserreload-mac
+
+nnoremap <Leader>rl :FirefoxReload<CR>
+nnoremap <F5> :FirefoxReload<CR>
+let g:returnApp = "MacVim"
+" }}}
+
+" smooth-scroll {{{
+
+" let g:ac_smooth_scroll_no_default_key_mappings = 1
+" nmap <silent> <space>d <Plug>(ac-smooth-scroll-c-d)
+" nmap <silent> <space>u <Plug>(ac-smooth-scroll-c-u) " nmap <silent> <Space>k <Plug>(ac-smooth-scroll-c-b)
+" let g:ac_smooth_scroll_du_sleep_time_msec = 40
+" }}}
+
+" Align.vim {{{
+
+let g:Align_xstrlen=3
+" }}}
+
+" coffee {{{
+
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" }}}
+
+" vim-coffee-script {{{
+
+" 保存時にコンパイル
+" autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
+" }}}
+
+" jasmine.vim {{{
+
+" ファイルタイプを変更
+function! JasmineSetting()
+  au BufRead,BufNewFile *Helper.js,*Spec.js  set filetype=jasmine.javascript
+  au BufRead,BufNewFile *Helper.coffee,*Spec.coffee  set filetype=jasmine.coffee
+  au BufRead,BufNewFile,BufReadPre *Helper.coffee,*Spec.coffee  let b:quickrun_config = {'type' : 'coffee'}
+  call jasmine#load_snippets()
+  map <buffer> <leader>m :JasmineRedGreen<CR>
+  command! JasmineRedGreen :call jasmine#redgreen()
+  command! JasmineMake :call jasmine#make()
+endfunction
+au BufRead,BufNewFile,BufReadPre *.coffee,*.js call JasmineSetting()
+" }}}
+
+" sass-compaile.vim {{{
+
+
+let g:sass_compile_cdloop = 5
+let g:sass_compile_auto = 0
+let g:sass_compile_file = ['scss', 'sass']
+let g:sass_compile_cssdir = ['style', 'css', 'stylesheet']
+let g:sass_compile_beforecmd = "terminal-notifier -message 'start sass comiple' -title 'sass-compile.' -activate 'org..MacVim'"
+let g:sass_compile_aftercmd =  "terminal-notifier -message ${sasscomileresult}  -title 'sass-compile.' -activate 'org..MacVim'"
+
+function! sasscompile#CompassCreate()
+    let cmd = 'compass create --sass-dir "'.g:sass_compile_sassdir[0].'" --css-dir "'.g:sass_compile_cssdir[0].'" --output-style nested --javascripts-dir "js" --images-dir "image" --syntax sass'
+    call system(cmd)
+
+    " cache config
+    let configfile = readfile('config.rb')
+    let configfile = add(configfile, 'cache = false')
+    call writefile(configfile, 'config.rb', 'b')
+
+    " remove cache
+    call system('rm -rf .sass-cache')
+
+    " remove sass & css
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/ie.scss')
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/print.scss')
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/ie.sass')
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/print.sass')
+    call system('rm -rf '.g:sass_compile_cssdir[0].'/ie.css')
+    call system('rm -rf '.g:sass_compile_cssdir[0].'/print.css')
+
+    echo cmd
+endfunction
+" }}}
+
+" indent_guides {{{
+
+" インデントの深さに色を付ける
+let g:indent_guides_start_level=1
+let g:indent_guides_auto_colors=1
+let g:indent_guides_enable_on_vim_startup=0
+let g:indent_guides_color_change_percent=20
+let g:indent_guides_guide_size=1
+let g:indent_guides_space_guides=1
+
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=237
+au FileType c,haskell,ocaml,coffee,ruby,javascript,python,slim IndentGuidesEnable
+nmap <silent><Leader>ig <Plug>IndentGuidesToggle
+" }}}
+
+" HTML Vilidator {{{
+
+au! BufWritePost *.html call TypeHTML()
+
+function! TypeHTML()
+  let html = search('<!DOCTYPE HTML>')
+  if (html<1)
+    "for XHTML
+    autocmd! BufWritePost <buffer> :silent make
+  else
+    "for HTML5
+    " au! BufWritePost *.html :HTML5Validate
+  endif
+endfunction
+" }}}
+
+" vim-rooter {{{
+
+map <silent> <unique> <Leader>vcd <Plug>RooterChangeToRootDirectory
+let g:rooter_patterns = ['Rakefile', 'Gruntfile.js', 'codekit-config.json', 'config.rb', 'composer.json', '.git/']
+let g:rooter_change_directory_for_non_project_files = 1
+" }}}
+
+" swtich.vim {{{
+let g:switch_custom_definitions =
+\ [
+\   ['¥', '&yen;'],
+\   [' ', '&nbsp;'],
+\   ['¨', '&uml;', '&die;'],
+\   ['­', '&shy;'],
+\   ['´', '&acute;'],
+\   ['&', '&amp;'],
+\   ['®', '&reg;'],
+\   ['©', '&copy;'],
+\   ['±', '&plusmn;'],
+\   ['§', '&sect;'],
+\   ['¢', '&cent;'],
+\   ['£', '&pound;'],
+\   ['µ', '&micro;'],
+\   ['"', '&quot;'],
+\   ['»', '&raquo;'],
+\   ['«', '&laquo;'],
+\   ['<', '&lt;'],
+\   ['>', '&gt;'],
+\   ['×', '&times;'],
+\   ['÷', '&divide;'],
+\   ['¹', '&sup1;'],
+\   ['²', '&sup2;'],
+\   ['³', '&sup3;'],
+\   ['¶', '&para;'],
+\   ['°', '&deg;'],
+\   ['¦', '&brvbar;'],
+\   ['½', '&frac12;'],
+\   ['¼', '&frac14;'],
+\   ['¾', '&frac34;'],
+\   ['♠', '&spades;'],
+\   ['♣', '&clubs;'],
+\   ['♥', '&hearts;'],
+\   ['♦', '&diams;'],
+\ ]
+
+nnoremap ! :Switch<CR>
+" }}}
+
+" vim-tags {{{
+
+nnoremap <C-]> g<C-]> 
+" }}}
+
+" previm {{{
+
+" let g:previm_open_cmd='open -a Firefox'
+" }}}
+
+" vim-over {{{
+
+" over.の起動
+nnoremap <silent> <Leader>m :OverCommandLine<CR>
+" カーソル下の単語をハイライト付きで置換
+nnoremap sub :OverCommandLine<CR>%s;<C-r><C-w>;;g<Left><Left>
+" コピーした文字列をハイライト付きで置換
+nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+" }}}
+
+" yankround.vim {{{
+
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+"" 履歴取得数
+let g:yankround_max_history = 50
+""履歴一覧(kien/ctrlp.)
+nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+" }}}
+
+" sudmode.vim {{{
+call submode#enter_with('expand-region', 'nv', 'r', '<Leader>e', '<Plug>(expand_region_expand)')
+call submode#map('expand-region', 'nv', 'r', 'e', '<Plug>(expand_region_expand)')
+call submode#map('expand-region', 'nv', 'r', 's', '<Plug>(expand_region_shrink)')
+
+call submode#enter_with('winsize', 'n', '.', '<C-w>.', '<C-w><')
+call submode#enter_with('winsize', 'n', ',', '<C-w>,', '<C-w>>')
+call submode#enter_with('winsize', 'n', '=', '<C-w>=', '<C-w>+')
+call submode#enter_with('winsize', 'n', '-', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '.', '<C-w><')
+call submode#map('winsize', 'n', '', ',', '<C-w>>')
+call submode#map('winsize', 'n', '', '=', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
+
+"}}}
+
+" vim-expand-region {{{
+let g:expand_region_text_objects = {
+  \ 'iw'  :0,
+  \ 'iW'  :0,
+  \ 'i"'  :0,
+  \ 'i''' :0,
+  \ 'i]'  :1,
+  \ 'ib'  :1,
+  \ 'iB'  :1,
+  \ 'il'  :0,
+  \ 'ip'  :0,
+  \ 'ie'  :0,
+  \ }
+
+" }}}
+
+" calender.vim {{{
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+" }}}
+
+"clever-f.vim {{{
+let g:clever_f_ignore_case = 1
+let g:clever_f_use_migemo = 1
+let g:clever_f_not_overwrites_standard_mappings = 1
+map f <Plug>(clever-f-f)
+map F <Plug>(clever-f-F)
+" }}}
+
+" tweetvim {{{
+nnoremap <silent> <Leader>ts :<C-u>TweetVimSay<CR>
+nnoremap <silent> <Leader>tu :<C-u>TweetVimUserStream<CR>
+" }}}
+
+" choosewin {{{
+map  t  <Plug>(choosewin)
+let g:choosewin_statusline_replace = 0
+let g:choosewin_overlay_enable = 1
+let g:choosewin_overlay_clear_multibyte = 1
+let g:choosewin_blink_on_land = 0
+let g:choosewin_label = "fgtrdsa"
+let g:choosewin_tablabel = "123456789"
+let g:choosewin_keymap   = {
+      \'k' : 'tab_prev',
+      \'j' : 'tab_next',
+      \'h' : 'tab_first',
+      \'l' : 'tab_last',
+      \'<Space>' : 'win_land',
+      \'t' : 'win_land',
+      \}
+" }}}
+
+" gist-vim {{{
+let g:gist_open_browser_after_post = 1
+let g:gist_detect_filetype = 1
+" }}}
+
+" laravel {{{
+noremap <Leader>art :VimShellInteractive php artisan 
+" }}}
+
+" dash {{{
+nnoremap K :<C-u>Dash<CR>
+"}}}
+
+" gundo {{{
+nnoremap U :<C-u>GundoToggle<CR>
+"}}}
+" vim: foldmethod=marker

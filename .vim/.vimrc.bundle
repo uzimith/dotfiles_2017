@@ -1,0 +1,184 @@
+"
+" Bundle
+"
+set nocompatible
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+ " Brief help
+ " :NeoBundleList          - list configured bundles
+ " :NeoBundleInstall(!)    - install(update) bundles
+ " :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc' " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+
+NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
+
+"vim
+NeoBundle 'Lokaltog/vim-easymotion'
+"コメントアウト
+NeoBundle 'tomtom/tcomment_vim'
+"Unite.vim
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-ssh'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle "osyo-manga/unite-filetype"
+NeoBundle 'osyo-manga/unite-quickrun_config'
+NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim'
+NeoBundle 'liquidz/vimfiler-sendto'
+"fを連打可能に
+NeoBundle 'rhysd/clever-f.vim'
+"Shel
+NeoBundle 'Shougo/vimshell.vim'
+"Filer
+NeoBundle 'Shougo/vimfiler'
+"Tags
+NeoBundle 'szw/vim-tags'
+"undoをtツリー形式で表示
+NeoBundle "sjl/gundo.vim"
+"レジスタの履歴を利用
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'kien/ctrlp.vim'
+"オートセーブ
+NeoBundle 'syui/wauto.vim'
+"インデント
+NeoBundle 'nathanaelkane/vim-indent-guides'
+"VisualModeの機能向上
+NeoBundle 'kana/vim-niceblock'
+"M-!で切り替え
+NeoBundle 'AndrewRadev/switch.vim'
+"vim内実行
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'ujihisa/shadow.vim'
+NeoBundle "osyo-manga/shabadou.vim"
+"自動でカレントディレクトリを操作
+NeoBundle 'airblade/vim-rooter'
+"サブモード
+NeoBundle 'kana/vim-submode'
+"補完・スニペット
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'honza/vim-snippets'
+"自動エラーチェック
+NeoBundle 'errormarker.vim'
+NeoBundle 'scrooloose/syntastic'
+"括弧自動補完
+NeoBundle "kana/vim-smartinput"
+"コード整形
+NeoBundle 'Align'
+"ブラウザで開く
+NeoBundle 'tyru/open-browser.vim'
+"検索置換
+NeoBundle 'rking/ag.vim'
+NeoBundle 'thinca/vim-qfreplace'
+" 1行のコードと複数行のコードの相互変換
+NeoBundle 'AndrewRadev/splitjoin.vim'
+" link tmux
+NeoBundle 't9md/vim-choosewin'
+" Redmine
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'kana/vim-metarw'
+NeoBundle 'basyura/rmine.vim'
+" twitter
+NeoBundle 'basyura/TweetVim'
+NeoBundle 'basyura/twibill.vim'
+" SudoEdit
+NeoBundle 'chrisbra/SudoEdit.vim'
+"text-object
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-line' " l
+NeoBundle 'kana/vim-textobj-entire' " e
+NeoBundle 'thinca/vim-textobj-between.git' " f{char}
+NeoBundle 'camelcasemotion' ",w ,e ,b
+" NeoBundle 'h1mesuke/textobj-wiw'
+NeoBundle "thinca/vim-textobj-comment" " ac, ic
+NeoBundle 'rhysd/vim-textobj-word-column' " v
+NeoBundle "rhysd/vim-textobj-ruby" " arr, brr
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'terryma/vim-expand-region'
+"git
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/unite-gist'
+" dash
+NeoBundle 'rizzatti/funcoo.vim'
+NeoBundle 'rizzatti/dash.vim'
+"statusline
+NeoBundle 'taichouchou2/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+NeoBundle "osyo-manga/unite-airline_themes"
+" taglist
+NeoBundle 'taglist.vim'
+"puppet
+NeoBundle "rodjek/vim-puppet"
+"ruby
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'ruby-matchit'
+NeoBundle 'taichouchou2/vim-endwise.git'
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'ujihisa/unite-rake'
+" NeoBundle 'm2ym/rsense'
+" NeoBundle 'taichouchou2/vim-rsense'
+NeoBundle 'slim-template/vim-slim'
+"js
+NeoBundle 'myhere/vim-nodejs-complete'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'leshill/vim-json.git'
+"web
+NeoBundle 'tell-k/vim-browsereload-mac'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'othree/html5.vim'
+NeoBundle "hokaccha/vim-html5validator"
+NeoBundle 'haml.zip'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'jQuery'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'nginx.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'claco/jasmine.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'AtsushiM/sass-compile.vim'
+"Scala
+NeoBundle 'yuroyoro/vim-scala'
+"Haskell
+NeoBundle 'dag/vim2hs'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'pbrisbin/html-template-syntax'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'kana/vim-filetype-haskell'
+" NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'ujihisa/unite-haskellimport'
+"markdown
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kannokanno/previm'
+"php
+NeoBundle 'beyondwords/vim-twig' " vim-twig : Twigのシンタックスハイライト。
+NeoBundle 'karakaram/vim-quickrun-phpunit'
+"Coq
+NeoBundle 'jvoorhis/coq.vim'
+NeoBundle 'eagletmt/coqtop-vim'
+" NeoBundle 'def-lkb/vimbufsync'
+" NeoBundle 'the-lambda-church/coquille'
+
+"color
+NeoBundle 'vim-scripts/Zenburn'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'therubymug/vim-pyte'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'ujihisa/unite-colorscheme'
+
+
+filetype plugin indent on
+
+NeoBundleCheck

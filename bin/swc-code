@@ -1,0 +1,10 @@
+#! /bin/bash
+# 日付_引数のmiddlemanフォルダを作成する
+
+if [ $# -ne 1 ]; then
+  echo "指定された引数は$#個です。" 1>&2
+  echo "実行するには1個の引数が必要です。" 1>&2
+  exit 1
+fi
+
+middleman init `date +%y%m%d`_$1 -T swc-middleman

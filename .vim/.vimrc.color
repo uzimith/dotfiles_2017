@@ -1,0 +1,15 @@
+" Vim color file
+syntax on
+
+function! LightColor()
+  colorscheme solarized
+  set background=light
+  set transparency=0
+endfunction
+command! LightColor :call LightColor()
+
+function! DarkColor()
+  colorscheme molokai
+  set transparency=20
+endfunction
+command! DarkColor :call DarkColor()

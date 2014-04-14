@@ -1,0 +1,18 @@
+[submodule ".zsh/zsh-completions"]
+	path = .zsh/zsh-completions
+	url = git://github.com/zsh-users/zsh-completions.git
+[submodule ".zsh/sd_cl"]
+	path = .zsh/sd_cl
+	url = https://github.com/rcmdnk/sd_cl.git
+[submodule ".emacs.d/proofgeneral"]
+	path = .emacs.d/proofgeneral
+	url = https://github.com/emacsattic/proofgeneral.git
+[submodule "vimperator-plugins"]
+	path = vimperator-plugins
+	url = https://github.com/vimpr/vimperator-plugins.git
+[submodule ".tmux/tmux-powerline"]
+	path = .tmux/tmux-powerline
+	url = https://github.com/erikw/tmux-powerline.git
+[submodule ".zsh/dircolors-solarized"]
+	path = .zsh/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git

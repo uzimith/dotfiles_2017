@@ -1,0 +1,33 @@
+(require 'evil)
+(define-key evil-insert-state-map "j" #'cofi/maybe-exit)
+
+(evil-define-command cofi/maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p)))
+    (insert "j")
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
+               nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt ?j))
+    (delete-char -1)
+    (set-buffer-modified-p modified)
+    (push 'escape unread-command-events))
+       (t (setq unread-command-events (append unread-command-events
+                          (list evt))))))))
+
+(define-key evil-normal-state-map (kbd "<SPC> k") 'evil-scroll-page-up)
+(define-key evil-normal-state-map (kbd "<SPC> j") 'evil-scroll-page-down)
+(define-key evil-normal-state-map (kbd "<SPC> h") 'evil-first-non-blank)
+(define-key evil-normal-state-map (kbd "<SPC> l") 'evil-end-of-line)
+(define-key evil-normal-state-map "\C-h" 'evil-window-left)
+(define-key evil-normal-state-map "\C-j" 'evil-window-down)
+(define-key evil-normal-state-map "\C-k" 'evil-window-up)
+(define-key evil-normal-state-map "\C-l" 'evil-window-right)
+(define-key evil-window-map "\C-h" 'evil-window-move-far-left)
+(define-key evil-window-map "\C-j" 'evil-window-move-very-bottom)
+(define-key evil-window-map "\C-k" 'evil-window-move-very-top)
+(define-key evil-window-map "\C-l" 'evil-window-move-far-right)
+(define-key evil-insert-state-map (kbd "C-d") 'delete-char)
+(evil-mode 1)

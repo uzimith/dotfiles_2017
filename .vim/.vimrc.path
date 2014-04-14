@@ -1,0 +1,6 @@
+let $PATH="~/bin:".$PATH
+let $PATH="/usr/local/bin:".$PATH
+let $PATH="~/.cabal/bin:".$PATH
+let $PATH="/opt/local/bin:".$PATH
+let $PATH="~/.composer/vendor/bin:".$PATH
+let $PATH="~/.rbenv/bin:".$PATH

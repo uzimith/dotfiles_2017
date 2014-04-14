@@ -1,0 +1,19 @@
+[user]
+	name = uzimith
+	email = uzimith.x9@gmail.com
+[github]
+	user = uzimith
+[core]
+	editor = mvim
+	excludesfile = /opt/boxen/config/git/gitignore
+[push]
+	default = simple
+[diff]
+	external= mvimdiff
+[pager]
+	diff =
+[mergetool]
+	keepBackup = true
+
+[hub]
+	protocol = https
