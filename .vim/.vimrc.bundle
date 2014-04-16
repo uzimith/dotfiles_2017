@@ -35,19 +35,12 @@ NeoBundle 'rhysd/unite-codic.vim'
 NeoBundle 'liquidz/vimfiler-sendto'
 "fを連打可能に
 NeoBundle 'rhysd/clever-f.vim'
-"Shel
+"Shell
 NeoBundle 'Shougo/vimshell.vim'
 "Filer
 NeoBundle 'Shougo/vimfiler'
-"Tags
-NeoBundle 'szw/vim-tags'
 "undoをtツリー形式で表示
 NeoBundle "sjl/gundo.vim"
-"レジスタの履歴を利用
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'kien/ctrlp.vim'
-"オートセーブ
-NeoBundle 'syui/wauto.vim'
 "インデント
 NeoBundle 'nathanaelkane/vim-indent-guides'
 "VisualModeの機能向上
@@ -71,6 +64,8 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'scrooloose/syntastic'
 "括弧自動補完
 NeoBundle "kana/vim-smartinput"
+"レジスタの履歴を利用
+NeoBundle 'LeafCage/yankround.vim'
 "コード整形
 NeoBundle 'Align'
 "ブラウザで開く
@@ -86,11 +81,6 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'kana/vim-metarw'
 NeoBundle 'basyura/rmine.vim'
-" twitter
-NeoBundle 'basyura/TweetVim'
-NeoBundle 'basyura/twibill.vim'
-" SudoEdit
-NeoBundle 'chrisbra/SudoEdit.vim'
 "text-object
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line' " l
@@ -105,16 +95,15 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-expand-region'
 "git
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'gregsexton/gitv'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/unite-gist'
+NeoBundle 'kmnk/vim-unite-giti.git'
 " dash
 NeoBundle 'rizzatti/funcoo.vim'
 NeoBundle 'rizzatti/dash.vim'
 "statusline
 NeoBundle 'taichouchou2/alpaca_powertabline'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-NeoBundle "osyo-manga/unite-airline_themes"
 " taglist
 NeoBundle 'taglist.vim'
 "puppet
@@ -126,8 +115,6 @@ NeoBundle 'ruby-matchit'
 NeoBundle 'taichouchou2/vim-endwise.git'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'ujihisa/unite-rake'
-" NeoBundle 'm2ym/rsense'
-" NeoBundle 'taichouchou2/vim-rsense'
 NeoBundle 'slim-template/vim-slim'
 "js
 NeoBundle 'myhere/vim-nodejs-complete'
@@ -145,9 +132,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'nginx.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'claco/jasmine.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'AtsushiM/sass-compile.vim'
 "Scala
 NeoBundle 'yuroyoro/vim-scala'
 "Haskell
@@ -156,23 +141,20 @@ NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'pbrisbin/html-template-syntax'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'kana/vim-filetype-haskell'
-" NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'ujihisa/unite-haskellimport'
 "markdown
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kannokanno/previm'
 "php
-NeoBundle 'beyondwords/vim-twig' " vim-twig : Twigのシンタックスハイライト。
+NeoBundle 'StanAngeloff/php.vim'
+NeoBundle 'beyondwords/vim-twig'
 NeoBundle 'karakaram/vim-quickrun-phpunit'
 "Coq
 NeoBundle 'jvoorhis/coq.vim'
 NeoBundle 'eagletmt/coqtop-vim'
-" NeoBundle 'def-lkb/vimbufsync'
-" NeoBundle 'the-lambda-church/coquille'
 
 "color
-NeoBundle 'vim-scripts/Zenburn'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'tomasr/molokai'
