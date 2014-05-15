@@ -26,13 +26,13 @@ nnoremap <silent> [unite]`  :<C-u>Unite filetype<CR>
 "履歴を表示
 nnoremap <silent> [unite]y  :<C-u>Unite yankround<CR>
 "QuickRunの設定
-nnoremap <silent> [unite]r  :<C-u>Unite quickrun_config<CR>
+nnoremap <silent> [unite]q  :<C-u>Unite quickrun_config<CR>
+"tags
+nnoremap <silent> [unite]t  :<C-u>Unite tags<CR>
 "マッピングを表示
 " nnoremap <silent> [unite]h  :<C-u>Unite -no-split output:map|map!|lmap<CR>
 "grep
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
-"Sendto
-nnoremap <silent> [unite]t :<C-u>Unite sendto<CR>
 "Codic
 nnoremap <silent> [unite]c :<C-u>Unite -no-split codic<CR>
 "twitter
@@ -54,13 +54,20 @@ let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 let g:unite_source_history_yank_enable =1
 let g:yankring_zap_keys = ""
-" from basyura/unite-rails
-nnoremap <silent> [unite]rm  :<C-u>Unite -no-split rails/model<CR>
-nnoremap <silent> [unite]rc  :<C-u>Unite -no-split rails/controller<CR>
-nnoremap <silent> [unite]rv  :<C-u>Unite -no-split rails/view<CR>
-nnoremap <silent> [unite]rl  :<C-u>Unite -no-split rails/lib<CR>
-nnoremap <silent> [unite]rj  :<C-u>Unite -no-split rails/javascript<CR>
-nnoremap <silent> [unite]rs  :<C-u>Unite -no-split rails/spec<CR>
+
+nnoremap <silent> [unite]rc :<C-u>Unite file file/new -input=app/controllers/ <CR>
+nnoremap <silent> [unite]rm :<C-u>Unite file file/new -input=app/models/ <CR>
+nnoremap <silent> [unite]rv :<C-u>Unite file file/new -input=app/views/ <CR>
+nnoremap <silent> [unite]rs :<C-u>Unite file file/new -input=app/assets/stylesheets/ <CR>
+nnoremap <silent> [unite]rj :<C-u>Unite file file/new -input=app/assets/javascripts/ <CR>
+nnoremap <silent> [unite]ro :<C-u>Unite file file/new -input=config/ <CR>
+nnoremap <silent> [unite]rl :<C-u>Unite file file/new -input=lib/ <CR>
+nnoremap <silent> [unite]rt :<C-u>Unite file file/new -input=test/ <CR>
+nnoremap <silent> [unite]rh :<C-u>Unite rails/heroku<CR>
+nnoremap <silent> [unite]rr :<C-u>Unite rake<CR>
+nnoremap <silent> [unite]rG :e Gemfile<CR>
+nnoremap <silent> [unite]rR :e config/routes.rb<CR>
+nnoremap <silent> [unite]rS :e db/seeds.rb<CR>
 
 let g:vimfiler_sendto = {
 \  'zip' : 'zip -r %F.zip %*',
@@ -417,22 +424,51 @@ let g:rails_modelines=0
 " let g:rails_url='http://localhost:3000'
 " let g:rails_ctags_arguments='--languages=-javascript'
 " let g:rails_ctags_arguments = ''
-function! SetUpRailsSetting()
-  nnoremap <buffer><Space>r :R<CR>
-  nnoremap <buffer><Space>a :A<CR>
-  nnoremap <buffer><Space>m :Rmodel<Space>
-  nnoremap <buffer><Space>c :Rcontroller<Space>
-  nnoremap <buffer><Space>v :Rview<Space>
-  nnoremap <buffer><Space>p :Rpreview<CR>
+
+autocmd User Rails call s:do_rails_autocmd()
+autocmd User Rails.view*                 NeoSnippetSource ~/.vim/snippets/ruby.rails.view.snip
+autocmd User Rails.model                 NeoSnippetSource ~/.vim/snippets/ruby.rails.model.snip
+autocmd User Rails.controller*           NeoSnippetSource ~/.vim/snippets/ruby.rails.controller.snip
+autocmd User Rails/config/routes.rb      NeoSnippetSource ~/.vim/snippets/ruby.rails.route.snip
+autocmd User Rails/config/environment.rb NeoSnippetSource ~/.vim/snippets/ruby.rails.environment.snip
+autocmd User Rails/config/routes.rb      NeoSnippetSource ~/.vim/snippets/ruby.rails.route.snip
+autocmd User Rails.spec.model            NeoSnippetSource ~/.vim/snippets/ruby.rspec.model.snip
+autocmd User Rails.spec.controller       NeoSnippetSource ~/.vim/snippets/ruby.rspec.controller.snip
+autocmd User Rails.spec.helper           NeoSnippetSource ~/.vim/snippets/ruby.rspec.helper.snip
+autocmd User Rails.spec.feature          NeoSnippetSource ~/.vim/snippets/ruby.capybara.snip
+autocmd User Rails.spec.routing          NeoSnippetSource ~/.vim/snippets/ruby.rspec.routing.snip
+autocmd User Rails.fixtures.replacement  NeoSnippetSource ~/.vim/snippets/ruby.factory_girl.snip
+autocmd User Rails/db/migrate/*          NeoSnippetSource ~/.vim/snippets/ruby.rails.migrate.snip
+
+"autocmd User Rails/spec/models/*等を可能に
+function! s:gsub(string, pattern, replacement)
+  return substitute(a:string, '\v\C'.a:pattern, a:replacement, 'g')
 endfunction
+
+function! s:do_rails_autocmd()
+if !exists("b:rails_root")
+return
+endif
  
-aug MyAutoCmd
-  au User Rails call SetUpRailsSetting()
-aug END
+let buf = rails#buffer()
+let type = "-" . buf.type_name()
+let path = '/' . buf.name()
+if path =~ '[ !#$%\,]'
+let path = ''
+endif
  
-aug RailsDictSetting
-  au!
-aug END
+if type != '-'
+execute "silent doautocmd User Rails" . s:gsub(type, '-', '.')
+endif
+ 
+if path != ''
+execute "silent doautocmd User Rails" . path
+endif
+endfunction
+
+autocmd BufWinEnter,BufNewFile Gemfile set filetype=Gemfile
+nnoremap <Space>a :<C-u>A<CR>
+
 " }}}
 
 " vimshell {{{
@@ -522,21 +558,11 @@ let Grep_Skip_Files = '*.bak *~'
 " }}}
 
 " taglist.vim {{{
-
-" 関数一覧
-set tags=tags
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-" let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags'
-"set tags+=~/.tags
 let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
-let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばを閉じる
 let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示
-let Tlist_Enable_Fold_Column = 1          " 折りたたみ
-let Tlist_Auto_Open = 1                   " 自動表示
 let Tlist_Auto_Update = 1
 let Tlist_WinWidth = 30
 map <silent> <Leader>tl :TlistToggle<CR>
-autocmd BufWritePost *.cpp :TlistUpdate
 " }}}
 
 " open-blowser.vim {{{
@@ -697,7 +723,7 @@ endfunction
 " vim-rooter {{{
 
 map <silent> <unique> <Leader>vcd <Plug>RooterChangeToRootDirectory
-let g:rooter_patterns = ['Rakefile', 'Gruntfile.js', 'codekit-config.json', 'config.rb', 'composer.json', '.git/']
+let g:rooter_patterns = ['Rakefile', 'Gemfile', 'Gruntfile.js', 'codekit-config.json', 'config.rb', 'composer.json', '.git/']
 let g:rooter_change_directory_for_non_project_files = 1
 " }}}
 
@@ -863,4 +889,31 @@ nnoremap K :<C-u>Dash<CR>
 " gundo {{{
 nnoremap U :<C-u>GundoToggle<CR>
 "}}}
+" php {{{
+let g:neocomplete_php_locale = 'ja'
+" }}}
+
+" phpcomplete-extended {{{
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+let g:phpcomplete_index_composer_command = 'composer'
+" }}}
+
+" alpaca_tags {{{
+let g:alpaca_update_tags_config = {
+      \ '_' : '-R --sort=yes --languages=+Ruby --languages=-css,scss,html',
+      \ 'js' : '--languages=+js',
+      \ 'ruby': '--languages=+Ruby',
+      \ }
+let g:alpaca_tags_ctags_bin = '/opt/boxen/homebrew/bin/ctags'
+
+augroup AlpacaTags
+  autocmd!
+  if exists(':Tags')
+    autocmd BufWritePost * TagsUpdate ruby
+    autocmd BufWritePost Gemfile TagsBundle
+    autocmd BufEnter * TagsSet
+  endif
+augroup END
+" }}}
+
 " vim: foldmethod=marker
