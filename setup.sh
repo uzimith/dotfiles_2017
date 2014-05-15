@@ -12,3 +12,4 @@ do
     ln -s $HOME/Config/dotfiles/$file $HOME/$file
 done
 
+ln -s $HOME/Config/dotfiles/.vim/.vimshrc $HOME/.vimshrc
