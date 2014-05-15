@@ -574,6 +574,9 @@ snippet asf
 snippet ast
 	$this->assertTrue(${1:Something});
 
+snippet asnull
+	$this->assertNull(${1:Something});
+
 snippet asfex
 	$this->assertFileExists(${1:path/to/file});
 
@@ -598,7 +601,13 @@ snippet asio
 snippet asit
 	$this->assertInternalType(${1:expected}, ${2:actual});
 
+snippet testclass
+  class ${$1:`vim_snnipets#Filename()`} extends TestCase {
+    ${0}
+  }
+
 snippet tc
+abbr testcase
 	public function test${1:name_of_the_test}()
 	{
 		${0:code}

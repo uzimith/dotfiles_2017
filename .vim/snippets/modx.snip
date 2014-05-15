@@ -13,3 +13,5 @@ snippet tp
   [[TopicPath?tplOuter=`<ul id="breadcrumb" class="clearfix">[+topics+]</ul>` &tplHomeTopic=`<li><a href="[+href+]" title="[+desc+]">[+title+]</a></li>` &tplOtherTopic=`<li><a href="[+href+]" title="[+desc+]">[+title+]</a></li>` &tplCurrentTopic=`<li class="last">[+title+]</li>` &tplSeparator=``]]
 snippet wayfinder
   [!Wayfinder? &startId=\`${1:0}\` &excludeDocs=\`${2}\` &level=\`${3:1}\`!]${0}
+snippet wayfinder
+  [!Wayfinder? &startId=`0` &level=`2` &excludeDocs=`34,50` &outerTpl=`@CODE:<ul class="navi">[+wf.wrapper+]</ul>` &rowTpl=`@CODE:<li class="i[+wf.docid+]"><a href="[+wf.link+]" title="[+wf.title+]">[+wf.title+]</a></li>` &parentRowTpl=`@CODE:<li class="i[+wf.docid+]"><a href="javascript:void(0)" title="[+wf.title+]">[+wf.title+]</a>[+wf.wrapper+]</li>` &parentRowHereTpl=`@CODE:<li class="i[+wf.docid+] active"><a href="javascript:void(0)" title="[+wf.title+]">[+wf.title+]</a>[+wf.wrapper+]</li>` &innerTpl=`@CODE:<ul>[+wf.wrapper+]</ul>` &hereTpl=`@CODE:<li class="i[+wf.docid+] active"><a href="[+wf.link+]" title="[+wf.title+]">[+wf.title+]</a>[+wf.wrapper+]</li>`!]
