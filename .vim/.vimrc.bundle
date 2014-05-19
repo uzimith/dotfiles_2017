@@ -23,7 +23,11 @@ NeoBundle 'Lokaltog/vim-easymotion'
 "コメントアウト
 NeoBundle 'tomtom/tcomment_vim'
 "Unite.vim
-NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy "Shougo/unite.vim", {
+\   'autoload' : {
+\       'commands' : [ "Unite" ]
+\   }
+\}
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tsukkee/unite-tag'
