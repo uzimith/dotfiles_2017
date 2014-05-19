@@ -53,3 +53,9 @@ augroup QuickRunPHPUnit
   autocmd!
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=phpunit syntax=php
 augroup END
+
+set foldtext=MyFoldText()
+
+function! MyFoldText()
+return substitute(getline(v:foldstart), '', '', '')
+endfunction
