@@ -154,6 +154,10 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'beyondwords/vim-twig'
 NeoBundle 'karakaram/vim-quickrun-phpunit'
+NeoBundle 'violetyk/neocomplete-php.vim'
+" NeoBundle 'm2mdas/phpcomplete-extended'
+" NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+
 "Coq
 NeoBundle 'jvoorhis/coq.vim'
 NeoBundle 'eagletmt/coqtop-vim'
