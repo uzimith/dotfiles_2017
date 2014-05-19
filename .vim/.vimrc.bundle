@@ -162,6 +162,9 @@ NeoBundle 'violetyk/neocomplete-php.vim'
 NeoBundle 'jvoorhis/coq.vim'
 NeoBundle 'eagletmt/coqtop-vim'
 
+"Arduino
+NeoBundle 'sudar/vim-arduino-syntax'
+
 "color
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'therubymug/vim-pyte'
