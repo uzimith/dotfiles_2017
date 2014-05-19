@@ -23,8 +23,9 @@ alias fo='open .'
 
 #gem
 alias be='bundle exec'
+alias best='bundle exec time spring'
 alias bi='bundle install --path vendor/bundle'
-
+alias bundle='nocorrect bundle'
 alias cp='nocorrect cp -irp'
 alias refe='nocorrect refe'
 
