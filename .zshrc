@@ -6,6 +6,8 @@
 [ -f ~/.zsh/.zshrc.app      ] && source ~/.zsh/.zshrc.app
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
+eval "$(rbenv init -)"
+
 case "${OSTYPE}" in
     # Mac(Unix)
     darwin*)

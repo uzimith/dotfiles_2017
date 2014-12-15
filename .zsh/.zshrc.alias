@@ -24,10 +24,16 @@ alias fo='open .'
 #gem
 alias be='bundle exec'
 alias best='bundle exec time spring'
-alias bi='bundle install --path vendor/bundle'
+alias bi='bundle install --path .bundle'
 alias bundle='nocorrect bundle'
 alias cp='nocorrect cp -irp'
 alias refe='nocorrect refe'
+
+#npm
+alias ne='PATH=$(npm bin):$PATH'
+
+#chrome
+alias goapp=~/google-cloud-sdk/platform/google_appengine/goapp
 
 # extract http://d.hatena.ne.jp/jeneshicc/20110215/1297778049
 extract () {
