@@ -43,7 +43,7 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/vimshell.vim'
 "Filer
 NeoBundle 'Shougo/vimfiler'
-"undoをtツリー形式で表示
+"undoをツリー形式で表示
 NeoBundle "sjl/gundo.vim"
 "インデント
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -68,6 +68,7 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'scrooloose/syntastic'
 "括弧自動補完
 NeoBundle "kana/vim-smartinput"
+NeoBundle "cohama/vim-smartinput-endwise"
 "レジスタの履歴を利用
 NeoBundle 'LeafCage/yankround.vim'
 "コード整形
@@ -117,7 +118,6 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'todesking/ruby_hl_lvar.vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'ruby-matchit'
-NeoBundle 'taichouchou2/vim-endwise.git'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'ujihisa/unite-rake'
 NeoBundle 'slim-template/vim-slim'
@@ -141,6 +141,7 @@ NeoBundle 'nginx.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'claco/jasmine.vim'
 NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'marijnh/tern_for_vim'
 "Scala
 NeoBundle 'yuroyoro/vim-scala'
 "Haskell
@@ -161,6 +162,9 @@ NeoBundle 'karakaram/vim-quickrun-phpunit'
 NeoBundle 'violetyk/neocomplete-php.vim'
 " NeoBundle 'm2mdas/phpcomplete-extended'
 " NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+
+" Swift
+NeoBundle 'toyamarinyon/vim-swift'
 
 "Coq
 NeoBundle 'jvoorhis/coq.vim'
