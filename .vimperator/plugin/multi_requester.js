@@ -1,1 +1,1 @@
-../../vimperator-plugins/multi_requester.js
+/Users/shimizu/.vimperator/vimperator-plugins/multi_requester.js

@@ -1,1 +1,1 @@
-../../vimperator-plugins/_smooziee.js
+/Users/shimizu/.vimperator/vimperator-plugins/_smooziee.js

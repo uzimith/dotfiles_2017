@@ -13,7 +13,7 @@ set focuscontent
 set hintchars=hjklasdfgyuiopqertnmzxcvb
 set complete=slS
 set wildoptions=auto
-" set editor='/opt/boxen/homebrew/Cellar/macvim/7.4-72/bin/mvim -f'
+" set editor='/usr/local/Cellar/macvim/7.4-73/bin/mvim -f'
 set editor='/usr/local/Cellar/macvim/HEAD/bin/mvim -f'
 set defsearch=google
 map <C-r> :source ~/.vimperatorrc<CR>
@@ -80,7 +80,8 @@ javascript <<EOM
     { label: 'title', value: '%TITLE%' },
     { label: 'plain', value: '%TITLE% %URL%' },
     { label: 'anchor', value: '<a href="%URL%">%TITLE%</a>' },
-    { label: 'markdown', value: '[%TITLE%](%URL%)' },
+    { label: 'md', value: '[%TITLE%](%URL%)' },
+    { label: 'middleman', value: "- title: %TITLE% \n link: %URL%" },
   ];
 EOM
 
@@ -112,6 +113,7 @@ mappings.addUserMap([modes.NORMAL], ['w'],
 );
 })();
 EOM
+
 " //hatena
 set complete+=H
 "=============================================

@@ -1,1 +1,1 @@
-../../vimperator-plugins/direct_bookmark.js
+/Users/shimizu/.vimperator/vimperator-plugins/direct_bookmark.js

@@ -1,1 +1,1 @@
-../../vimperator-plugins/_libly.js
+/Users/shimizu/.vimperator/vimperator-plugins/_libly.js

@@ -1,1 +1,1 @@
-../../vimperator-plugins/caret-hint.js
+/Users/shimizu/.vimperator/vimperator-plugins/caret-hint.js
