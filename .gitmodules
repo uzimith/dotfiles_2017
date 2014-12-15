@@ -16,3 +16,6 @@
 [submodule ".zsh/dircolors-solarized"]
 	path = .zsh/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule ".vimperator/vimperator-plugins"]
+	path = .vimperator/vimperator-plugins
+	url = https://github.com/vimpr/vimperator-plugins.git
