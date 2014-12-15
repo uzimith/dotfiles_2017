@@ -11,8 +11,8 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 " 0, 9で行頭、行末へ
-nmap 0 1
-nmap 9 $
+nmap <Space>h 1
+nmap <Space>l $
 
 " Yを行末までヤンクに変更
 nnoremap Y y$
@@ -37,9 +37,9 @@ vmap gc :xccmd commentAndUncommentCurrentLines<CR>
 nnoremap ,e :xccmd toggleTokenizedEditing<CR>
 
 " Open quickly
-nnoremap ff :xccmd openQuickly<CR>
-nnoremap fc :xccmd showDocumentItemsMenu<CR>
-nnoremap fn :xccmd jumpToNextCounterpart<CR>
+nnoremap sd :xccmd openQuickly<CR>
+nnoremap sc :xccmd showDocumentItemsMenu<CR>
+nnoremap sn :xccmd jumpToNextCounterpart<CR>
 " run
 nnoremap ,rr :run<CR>
 " view
@@ -52,14 +52,14 @@ nnoremap ,ft :xccmd toggleTabBar<CR>
 nmap ,s :xccmd changeToStandardEditor<CR>
 nmap ,a :xccmd changeToGeniusEditor<CR>
 nmap ,v :xccmd changeToVersionEditor<CR>
-nmap tn :xccmd selectNextTab<CR>
-nmap tp :xccmd selectPreviousTab<CR>
-nmap tc :xccmd newTab<CR>
-nmap tq :xccmd closeCurrentTab<CR>
+nmap gt :xccmd selectNextTab<CR>
+nmap gT :xccmd selectPreviousTab<CR>
+nmap ,t :xccmd newTab<CR>
+nmap <C-w>q :xccmd closeCurrentTab<CR>
 
 inoremap ( ()<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
-inoremap { {}<Left>
+" inoremap { {}<Left>
 inoremap [ []<Left>
 
