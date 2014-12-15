@@ -411,6 +411,12 @@ let g:surround_custom_mapping.python = {
       \ }
 " }}}
 
+" ruby {{{
+
+call smartinput_endwise#define_default_rules()
+
+" }}}
+
 " rails {{{
 
 let g:rails_default_file='config/database.yml'
@@ -467,7 +473,6 @@ endif
 endfunction
 
 autocmd BufWinEnter,BufNewFile Gemfile set filetype=Gemfile syntax=ruby
-autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=rspec syntax=ruby
 nnoremap <Space>a :<C-u>A<CR>
 
 " }}}
@@ -482,6 +487,7 @@ noremap <Leader>fs :VimShellBufferDir<CR>
 noremap <Leader>s :VimShellPop<CR>
 noremap <Leader>vsrc :VimShellInteractive rails console<CR>
 nmap <Leader>pry :VimShellInteractive pry<CR>
+
 " }}}
 
 " quickrun.vim {{{
@@ -497,16 +503,6 @@ let g:quickrun_config._ = {
   \ "hook/shabadoubi_touch_henshin/enable" : 1,
   \ "hook/shabadoubi_touch_henshin/wait" : 20
   \}
-let g:quickrun_config['javascript/mocha'] = {
-  \ 'command': 'mocha',
-  \ 'tempfile': '%{tempname()}.js'
-  \ }
-let g:quickrun_config['coffee/display'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
-let g:quickrun_config['coffee/mocha'] = {
-  \ 'command': 'mocha',
-  \ 'exec': [ "coffee -b -j __temp__.js -c %s ","mocha __temp__.js"],
-  \ 'hook/sweep/files': ["__temp__.js"]
-  \ }
 let g:quickrun_config['coffee/compile'] = {
   \ 'command': 'coffee',
   \ 'cmdopt': '-cb',
@@ -515,15 +511,6 @@ let g:quickrun_config['coffee/compile'] = {
 let g:quickrun_config['markdown'] = {
   \ 'outputter': 'browser'
   \ }
-let g:quickrun_config['rspec'] = {
-  \ 'type': 'rspec',
-  \ 'command': "rspec",
-  \ 'cmdopt': "-l %{line('.')}",
-  \ 'exec': "bundle exec %c %o %s ",
-  \ 'outputter/buffer/filetype': 'rspec-result',
-  \ 'outputter/buffer/split': 'botright 15',
-  \ 'filetype': 'rspec-result'
-  \}
 " phpunit
 let g:quickrun_config['phpunit'] = {
   \ 'command': "phpunit",
@@ -533,6 +520,11 @@ let g:quickrun_config['phpunit'] = {
   \ 'outputter/buffer/split': 'vertical 35',
   \ 'outputter/phpunit/height': 3
   \}
+let g:quickrun_config['swift'] = {
+  \ 'command': '/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift',
+  \ 'cmdopt': '-i',
+  \ 'exec': '%c %o %s'
+  \ }
 nnoremap <Leader>rr :QuickRun<CR>
 " <C-c> で実行を強制終了させる
 " quickrun. が実行していない場合には <C-c> を呼び出す
@@ -647,119 +639,31 @@ endfunction
 au BufRead,BufNewFile,BufReadPre *.coffee,*.js call JasmineSetting()
 " }}}
 
-" sass-compaile.vim {{{
-
-
-let g:sass_compile_cdloop = 5
-let g:sass_compile_auto = 0
-let g:sass_compile_file = ['scss', 'sass']
-let g:sass_compile_cssdir = ['style', 'css', 'stylesheet']
-let g:sass_compile_beforecmd = "terminal-notifier -message 'start sass comiple' -title 'sass-compile.' -activate 'org..MacVim'"
-let g:sass_compile_aftercmd =  "terminal-notifier -message ${sasscomileresult}  -title 'sass-compile.' -activate 'org..MacVim'"
-
-function! sasscompile#CompassCreate()
-    let cmd = 'compass create --sass-dir "'.g:sass_compile_sassdir[0].'" --css-dir "'.g:sass_compile_cssdir[0].'" --output-style nested --javascripts-dir "js" --images-dir "image" --syntax sass'
-    call system(cmd)
-
-    " cache config
-    let configfile = readfile('config.rb')
-    let configfile = add(configfile, 'cache = false')
-    call writefile(configfile, 'config.rb', 'b')
-
-    " remove cache
-    call system('rm -rf .sass-cache')
-
-    " remove sass & css
-    call system('rm -rf '.g:sass_compile_sassdir[0].'/ie.scss')
-    call system('rm -rf '.g:sass_compile_sassdir[0].'/print.scss')
-    call system('rm -rf '.g:sass_compile_sassdir[0].'/ie.sass')
-    call system('rm -rf '.g:sass_compile_sassdir[0].'/print.sass')
-    call system('rm -rf '.g:sass_compile_cssdir[0].'/ie.css')
-    call system('rm -rf '.g:sass_compile_cssdir[0].'/print.css')
-
-    echo cmd
-endfunction
-" }}}
-
 " indent_guides {{{
 
 " インデントの深さに色を付ける
 let g:indent_guides_start_level=1
-let g:indent_guides_auto_colors=1
+let g:indent_guides_auto_colors=0
 let g:indent_guides_enable_on_vim_startup=0
 let g:indent_guides_color_change_percent=20
 let g:indent_guides_guide_size=1
 let g:indent_guides_space_guides=1
 
 hi IndentGuidesOdd  ctermbg=235
+" hi IndentGuidesEven  ctermbg=235
 hi IndentGuidesEven ctermbg=237
 au FileType c,haskell,ocaml,coffee,ruby,javascript,python,slim IndentGuidesEnable
 nmap <silent><Leader>ig <Plug>IndentGuidesToggle
-" }}}
 
-" HTML Vilidator {{{
-
-au! BufWritePost *.html call TypeHTML()
-
-function! TypeHTML()
-  let html = search('<!DOCTYPE HTML>')
-  if (html<1)
-    "for XHTML
-    autocmd! BufWritePost <buffer> :silent make
-  else
-    "for HTML5
-    " au! BufWritePost *.html :HTML5Validate
-  endif
-endfunction
 " }}}
 
 " vim-rooter {{{
 
 map <silent> <unique> <Leader>vcd <Plug>RooterChangeToRootDirectory
-let g:rooter_patterns = ['Rakefile', 'Gemfile', 'Gruntfile.js', 'codekit-config.json', 'config.rb', 'composer.json', '.git/']
+let g:rooter_patterns = ['.git', 'package.json', 'Rakefile', 'Gemfile', 'Gruntfile.js', 'codekit-config.json', 'config.rb']
 let g:rooter_change_directory_for_non_project_files = 1
 " }}}
 
-" swtich.vim {{{
-let g:switch_custom_definitions =
-\ [
-\   ['¥', '&yen;'],
-\   [' ', '&nbsp;'],
-\   ['¨', '&uml;', '&die;'],
-\   ['­', '&shy;'],
-\   ['´', '&acute;'],
-\   ['&', '&amp;'],
-\   ['®', '&reg;'],
-\   ['©', '&copy;'],
-\   ['±', '&plusmn;'],
-\   ['§', '&sect;'],
-\   ['¢', '&cent;'],
-\   ['£', '&pound;'],
-\   ['µ', '&micro;'],
-\   ['"', '&quot;'],
-\   ['»', '&raquo;'],
-\   ['«', '&laquo;'],
-\   ['<', '&lt;'],
-\   ['>', '&gt;'],
-\   ['×', '&times;'],
-\   ['÷', '&divide;'],
-\   ['¹', '&sup1;'],
-\   ['²', '&sup2;'],
-\   ['³', '&sup3;'],
-\   ['¶', '&para;'],
-\   ['°', '&deg;'],
-\   ['¦', '&brvbar;'],
-\   ['½', '&frac12;'],
-\   ['¼', '&frac14;'],
-\   ['¾', '&frac34;'],
-\   ['♠', '&spades;'],
-\   ['♣', '&clubs;'],
-\   ['♥', '&hearts;'],
-\   ['♦', '&diams;'],
-\ ]
-
-nnoremap ! :Switch<CR>
-" }}}
 
 " vim-tags {{{
 
@@ -811,7 +715,7 @@ call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
 call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
 call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
-
+  
 "}}}
 
 " vim-expand-region {{{
@@ -882,6 +786,7 @@ nnoremap K :<C-u>Dash<CR>
 " gundo {{{
 nnoremap U :<C-u>GundoToggle<CR>
 "}}}
+
 " php {{{
 let g:neocomplete_php_locale = 'ja'
 " }}}
