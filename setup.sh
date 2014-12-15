@@ -4,7 +4,8 @@
 # - Install Xcode
 # - xcode-select --install
 
-DOT_FILES=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux .tmux-powerlinerc .tmux.conf .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman)
+# dotfiles
+DOT_FILES=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux .tmux-powerlinerc .tmux.conf .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc)
 
 for file in ${DOT_FILES[@]}
 do
@@ -13,3 +14,6 @@ do
 done
 
 ln -s $HOME/Config/dotfiles/.vim/.vimshrc $HOME/.vimshrc
+
+# homebrew
+brew bundle
