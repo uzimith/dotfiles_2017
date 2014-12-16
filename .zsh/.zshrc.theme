@@ -32,4 +32,7 @@ SPROMPT="Did you mean $p_comd? [n,y,a,e]: "
 RPROMPT="$p_giti$p_cdir"
 
 # ls
-eval `gdircolors ~/.zsh/dircolors-solarized/dircolors.256dark`
+if [ `which gdircolors` ]; then
+  alias dircolors='gdircolors'
+fi
+eval `dircolors ~/.zsh/dircolors-solarized/dircolors.256dark`

@@ -1,6 +1,10 @@
 # ls
-alias ls='gls --color=auto'
-alias l='gls -lAFh --color=auto' alias ll='gls -lAFh --color=auto | less'
+alias ls='ls --color=auto'
+alias l='ls -lAFh --color=auto'
+if [ `which gls` ]; then
+    alias ls='gls --color=auto'
+    alias l='gls -lAFh --color=auto'
+fi
 
 # process
 alias j="jobs -l"
