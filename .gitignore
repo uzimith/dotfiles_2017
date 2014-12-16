@@ -1,4 +1,5 @@
 .vim/bundle/*
+!.vim/bundle/neobundle.vim
 .vim/.session
 .vim/.vimrc.secret
 .vim/.netrwhist
