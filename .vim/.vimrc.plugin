@@ -525,6 +525,16 @@ let g:quickrun_config['swift'] = {
   \ 'cmdopt': '-i',
   \ 'exec': '%c %o %s'
   \ }
+let g:quickrun_config['ruby/system'] = {
+  \ 'command': 'ruby',
+  \ 'cmdopt': '',
+  \ 'exec': '%c %o %s'
+  \ }
+let g:quickrun_config['ruby/bundle'] = {
+  \ 'command': 'ruby',
+  \ 'cmdopt': 'bundle exec',
+  \ 'exec': '%o %c %s'
+  \ }
 nnoremap <Leader>rr :QuickRun<CR>
 " <C-c> で実行を強制終了させる
 nnoremap <expr><silent> <C-c> quickrun#is_running() ?  quickrun#sweep_sessions() : "\<C-c>"
@@ -811,6 +821,18 @@ augroup AlpacaTags
     autocmd BufEnter * TagsSet
   endif
 augroup END
+" }}}
+
+" vim2hs {{{{
+let g:haskell_conceal = 0
+" }}}}
+
+" ghcmod-vim {{{
+autocmd BufWritePost *.hs GhcModCheckAsync
+" }}}
+
+" unite-haskellimport {{{
+nnoremap <silent> [unite]hi :<C-u>Unite haskellimport<CR>
 " }}}
 
 " vim: foldmethod=marker
