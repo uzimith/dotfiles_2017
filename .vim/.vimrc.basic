@@ -49,12 +49,7 @@ filetype plugin on
 
 " filetype
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-
-" phpunit
-augroup QuickRunPHPUnit
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *Test.php set filetype=phpunit syntax=php
-augroup END
+autocmd BufWinEnter,BufNewFile *Test.php set filetype=phpunit syntax=php
 
 set foldtext=MyFoldText()
 
