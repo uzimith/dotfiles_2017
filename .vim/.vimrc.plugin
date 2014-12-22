@@ -831,4 +831,8 @@ autocmd BufWritePost *.hs GhcModCheckAsync
 nnoremap <silent> [unite]hi :<C-u>Unite haskellimport<CR>
 " }}}
 
+" powerline {{{
+set rtp+=~/Config/dotfiles/powerline/powerline/bindings/vim
+" }}}
+
 " vim: foldmethod=marker

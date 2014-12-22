@@ -40,9 +40,8 @@ colorscheme solarized
 
 if has("gui")
   set transparency=20
+  set guifont=Ricty\ Regular\ for\ Powerline:h15
 endif
-set guifont=Ricty\ Regular\ for\ Powerline:h15
-" set guifont=Menlo\ Regular\ for\ Powerline:h15
 
 let g:buftabs_only_basename=1
 let g:buftabs_in_statusline=1
