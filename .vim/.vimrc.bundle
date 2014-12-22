@@ -23,9 +23,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-
-NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
-
 "vim
 NeoBundle 'Lokaltog/vim-easymotion'
 "コメントアウト
@@ -47,6 +44,8 @@ NeoBundle 'rhysd/unite-codic.vim'
 NeoBundle 'liquidz/vimfiler-sendto'
 "fを連打可能に
 NeoBundle 'rhysd/clever-f.vim'
+" clipboard
+NeoBundle 'git://github.com/kana/vim-fakeclip.git'
 "Shell
 NeoBundle 'Shougo/vimshell.vim'
 "Filer
@@ -72,7 +71,6 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
 "自動エラーチェック
-NeoBundle 'errormarker.vim'
 NeoBundle 'scrooloose/syntastic'
 "括弧自動補完
 NeoBundle "kana/vim-smartinput"
@@ -160,6 +158,9 @@ NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'ujihisa/unite-haskellimport'
+" Rust
+NeoBundle 'wting/rust.vim'
+
 "markdown
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kannokanno/previm'
