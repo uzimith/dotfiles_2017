@@ -34,7 +34,9 @@ set laststatus=2
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 colorscheme molokai
-set transparency=20
+if has("gui")
+  set transparency=20
+endif
 set guifont=Ricty\ Regular\ for\ Powerline:h15
 " set guifont=Menlo\ Regular\ for\ Powerline:h15
 

@@ -21,7 +21,6 @@ set showcmd                      " コマンドをステータス行に表示
 set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set ambiwidth=double
-"set modelines=0                  " モードラインは無効
 set ignorecase
 set smartcase
 set hlsearch
@@ -32,11 +31,7 @@ set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
 
-" if has("gui_macvim")
-  set clipboard+=unnamed
-  set clipboard=unnamed
-" endif
-imap <C-S-p>  <ESC>"pa
+set clipboard=unnamed
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
