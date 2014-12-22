@@ -11,14 +11,14 @@ nnoremap <silent> [unite]f  :<C-u>Unite -no-split -buffer-name=files file file/n
 nnoremap <silent> [unite]F  :<C-u>Unite -no-split -buffer-name=files file file/new<CR>
 " バッファ一覧
 nnoremap <silent> [unite]b  :<C-u>Unite -no-split buffer<CR>
-" 常用セット
-nnoremap <silent> [unite]u  :<C-u>Unite -no-split buffer file_mru<CR>
 " ブックマーク
 nnoremap <silent> [unite]l  :<C-u>Unite -no-split bookmark<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
 nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -no-split file file/new<CR>
+" project
+nnoremap <silent> [unite]p  :<C-u>UniteWithProjectDir -no-split file file/new<CR>
 " snippet一覧
 nnoremap <silent> [unite]s  :<C-u>Unite neosnippet<CR>
 " filetype一覧
@@ -30,13 +30,11 @@ nnoremap <silent> [unite]q  :<C-u>Unite quickrun_config<CR>
 "tags
 nnoremap <silent> [unite]t  :<C-u>Unite tags<CR>
 "マッピングを表示
-" nnoremap <silent> [unite]h  :<C-u>Unite -no-split output:map|map!|lmap<CR>
+nnoremap <silent> [unite]h  :<C-u>Unite -no-split output:map<CR>
 "grep
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
 "Codic
 nnoremap <silent> [unite]c :<C-u>Unite -no-split codic<CR>
-"twitter
-nnoremap <silent> [unite],t :<C-u>Unite -no-split tweetvim<CR>
 "search
 nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
 nnoremap <silent> / :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
@@ -483,11 +481,9 @@ let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 " let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_enable_smart_case = 1
 
-noremap <Leader>fs :VimShellBufferDir<CR>
+noremap <Leader>vs :VimShellBufferDir<CR>
 noremap <Leader>s :VimShellPop<CR>
-noremap <Leader>vsrc :VimShellInteractive rails console<CR>
 nmap <Leader>pry :VimShellInteractive pry<CR>
-
 " }}}
 
 " quickrun.vim {{{
@@ -789,7 +785,7 @@ noremap <Leader>art :VimShellInteractive php artisan
 " }}}
 
 " dash {{{
-nnoremap K :<C-u>Dash<CR>
+nnoremap D :<C-u>Dash<CR>
 "}}}
 
 " gundo {{{
