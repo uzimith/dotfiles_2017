@@ -785,7 +785,7 @@ noremap <Leader>art :VimShellInteractive php artisan
 " }}}
 
 " dash {{{
-nnoremap D :<C-u>Dash<CR>
+nnoremap <Leader>d :<C-u>Dash<CR>
 "}}}
 
 " gundo {{{
