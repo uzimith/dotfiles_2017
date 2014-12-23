@@ -43,6 +43,8 @@ NeoBundle 'liquidz/vimfiler-sendto'
 NeoBundle 'rhysd/clever-f.vim'
 " clipboard
 NeoBundle 'git://github.com/kana/vim-fakeclip.git'
+" tmux
+NeoBundle 'christoomey/vim-tmux-navigator'
 "Shell
 NeoBundle 'Shougo/vimshell.vim'
 "Filer
