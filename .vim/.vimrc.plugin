@@ -317,7 +317,7 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#disable_auto_complete = 1
+let g:neocomplete#disable_auto_complete = 0
 
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
@@ -614,13 +614,6 @@ let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
 " エラー行をsignで表示する
 let g:syntastic_enable_signs = 1
-" 可能ならhighligt表示する
-let g:syntastic_enable_highlighting = 1
-" 自動的に開いたり閉じたりする
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map={ 'mode': 'active',
-                     \ 'active_filetypes': [],
-                     \ 'passive_filetypes': ['html'] }
 " }}}
 
 " easymotion {{{
