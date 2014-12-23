@@ -1,1 +1,1 @@
-/Users/shimizu/.vimperator/vimperator-plugins/copy.js
+/Users/uzimith/.vimperator/vimperator-plugins/copy.js

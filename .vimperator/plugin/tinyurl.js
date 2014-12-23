@@ -1,1 +1,1 @@
-/Users/shimizu/.vimperator/vimperator-plugins/tinyurl.js
+/Users/uzimith/.vimperator/vimperator-plugins/tinyurl.js
