@@ -833,10 +833,6 @@ augroup END
 let g:haskell_conceal = 0
 " }}}}
 
-" ghcmod-vim {{{
-autocmd BufWritePost *.hs GhcModCheckAsync
-" }}}
-
 " unite-haskellimport {{{
 nnoremap <silent> [unite]hi :<C-u>Unite haskellimport<CR>
 " }}}
