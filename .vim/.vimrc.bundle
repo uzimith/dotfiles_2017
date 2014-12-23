@@ -38,6 +38,7 @@ NeoBundle "osyo-manga/unite-filetype"
 NeoBundle 'osyo-manga/unite-quickrun_config'
 NeoBundle 'koron/codic-vim'
 NeoBundle 'rhysd/unite-codic.vim'
+NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'liquidz/vimfiler-sendto'
 "fを連打可能に
 NeoBundle 'rhysd/clever-f.vim'
@@ -74,8 +75,6 @@ NeoBundle 'scrooloose/syntastic'
 "括弧自動補完
 NeoBundle "kana/vim-smartinput"
 NeoBundle "cohama/vim-smartinput-endwise"
-"レジスタの履歴を利用
-NeoBundle 'LeafCage/yankround.vim'
 "コード整形
 NeoBundle 'Align'
 "ブラウザで開く
@@ -83,14 +82,8 @@ NeoBundle 'tyru/open-browser.vim'
 "検索置換
 NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-qfreplace'
-" 1行のコードと複数行のコードの相互変換
-NeoBundle 'AndrewRadev/splitjoin.vim'
 " link tmux
 NeoBundle 't9md/vim-choosewin'
-" Redmine
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'kana/vim-metarw'
-NeoBundle 'basyura/rmine.vim'
 "text-object
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line' " l
@@ -123,8 +116,7 @@ NeoBundle 'ruby-matchit'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'ujihisa/unite-rake'
 NeoBundle 'slim-template/vim-slim'
-NeoBundle 'alpaca-tc/neorspec.vim'
-NeoBundle 'alpaca-tc/alpaca_tags'
+eoBundle 'alpaca-tc/neorspec.vim'
 
 "js
 NeoBundle 'myhere/vim-nodejs-complete'
