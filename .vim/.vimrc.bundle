@@ -167,6 +167,10 @@ NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'jvoorhis/coq.vim'
 NeoBundle 'eagletmt/coqtop-vim'
 
+"Go
+NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'dgryski/vim-godef'
+
 "Arduino
 NeoBundle 'sudar/vim-arduino-syntax'
 
