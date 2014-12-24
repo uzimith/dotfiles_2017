@@ -4,12 +4,12 @@
 [github]
 	user = uzimith
 [core]
-	editor = mvim
+	editor = vim
 	excludesfile = /opt/boxen/config/git/gitignore
 [push]
 	default = simple
 [diff]
-	external= mvimdiff
+	external= vimdiff
 [pager]
 	diff =
 [mergetool]
