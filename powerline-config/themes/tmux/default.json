@@ -28,7 +28,7 @@
         "name": "weather",
         "args": {
           "unit": "C",
-          "location_query": "tsukuba, Japan"
+          "location_query": "tsukuba"
         }
       }
     ]
