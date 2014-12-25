@@ -98,6 +98,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-expand-region'
 "git
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/unite-gist'
 NeoBundle 'kmnk/vim-unite-giti.git'
