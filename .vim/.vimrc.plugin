@@ -79,15 +79,15 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/
 " }}}
 " Fugitive.vim {{{
 
-nnoremap <Space>gd :<C-u>Gdiff<CR>
-nnoremap <silent> <Space>gs :<C-u>Gstatus<CR>
-nnoremap <Space>gl :<C-u>Glog<CR>
-nnoremap <Space>ga :<C-u>Gwrite<CR>
-nnoremap <Space>gr :<C-u>Gread<CR>
-nnoremap <Space>gc :<C-u>Gcommit<CR>
-nnoremap <Space>gC :<C-u>Git commit --amend<CR>
-nnoremap <Space>gp :<C-u>Git push<CR>
-nnoremap <Space>gb :<C-u>Gblame<CR>
+nnoremap <Leader>gd :<C-u>Gdiff<CR>
+nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <Leader>gl :<C-u>Glog<CR>
+nnoremap <Leader>ga :<C-u>Gwrite<CR>
+nnoremap <Leader>gr :<C-u>Gread<CR>
+nnoremap <Leader>gc :<C-u>Gcommit<CR>
+nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
+nnoremap <Leader>gp :<C-u>Git push<CR>
+nnoremap <Leader>gb :<C-u>Gblame<CR>
 " }}}
 " gist-vim {{{
 let g:gist_open_browser_after_post = 1
@@ -261,7 +261,9 @@ let g:expand_region_text_objects = {
   \ }
 
 " }}}
-
+" switch.vim {{{
+noremap ! :Switch<CR>
+" }}}
 "
 " file
 "
