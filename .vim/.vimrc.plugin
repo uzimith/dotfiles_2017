@@ -268,7 +268,7 @@ noremap ! :Switch<CR>
 " file
 "
 " Unite.vim {{{
-" The prefix key.
+" soure  {{{
 nnoremap    [unite]   <Nop>
 nmap    s [unite]
 
@@ -308,19 +308,6 @@ nnoremap <silent> [unite]c :<C-u>Unite -no-split codic<CR>
 nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
 nnoremap <silent> / :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
 nnoremap ? /\v
-" unite-grepのバックエンドをagに切り替える
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-let g:unite_source_grep_recursive_opt = ''
-let g:unite_source_grep_max_candidates = 200
-" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-" insert modeで開始
-let g:unite_enable_start_insert = 1
-" 大文字小文字を区別しない
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-let g:unite_source_history_yank_enable =1
-let g:yankring_zap_keys = ""
 
 nnoremap <silent> [unite]rc :<C-u>Unite file file/new -input=app/controllers/ <CR>
 nnoremap <silent> [unite]rm :<C-u>Unite file file/new -input=app/models/ <CR>
@@ -335,6 +322,20 @@ nnoremap <silent> [unite]rr :<C-u>Unite rake<CR>
 nnoremap <silent> [unite]rG :e Gemfile<CR>
 nnoremap <silent> [unite]rR :e config/routes.rb<CR>
 nnoremap <silent> [unite]rS :e db/seeds.rb<CR>
+" }}}
+" unite-grepのバックエンドをagに切り替える {{{
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
+" }}}
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+let g:unite_source_history_yank_enable = 1
+let g:yankring_zap_keys = ""
 
 let g:vimfiler_sendto = {
 \  'zip' : 'zip -r %F.zip %*',
@@ -344,7 +345,7 @@ let g:vimfiler_sendto = {
 \  'finder' : 'open .'
 \ }
 
-" tabvsplit
+" tabvsplit {{{
 let s:unite_action = {
 \   'is_selectable': 1,
 \ }
@@ -358,21 +359,17 @@ endfunction  " }}}
 
 call unite#custom_action('openable', 'tabvsplit', s:unite_action)
 unlet! s:unite_action
+" }}}
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-  " Overwrite settings.
-
-  " ESCキーを2回押すと終了する
+  let g:unite_enable_start_insert = 1
   nmap <buffer> <ESC>      <Plug>(unite_exit)
   nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
   nmap <buffer> q <Plug>(unite_exit)
   imap <buffer> jj      <Plug>(unite_insert_leave)
   nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
   imap <buffer> <C-h>     <Plug>(unite_delete_backward_path)
-
-  " Start insert.
-  let g:unite_enable_start_insert = 1
 
   " ウィンドウを分割して開く
   nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('split')
@@ -383,11 +380,11 @@ function! s:unite_my_settings()
   inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
   " vimfilerで開く
-  nnoremap <silent> <buffer> <expr> <C-e> unite#do_action('vimfiler')
-  inoremap <silent> <buffer> <expr> <C-e> unite#do_action('vimfiler')
+  nnoremap <silent> <buffer> <expr> <C-f> unite#do_action('vimfiler')
+  inoremap <silent> <buffer> <expr> <C-f> unite#do_action('vimfiler')
   " vimshellで開く
-  nnoremap <silent> <buffer> <expr> <C-s> unite#do_action('tabvimshell')
-  inoremap <silent> <buffer> <expr> <C-s> unite#do_action('tabvimshell')
+  nnoremap <silent> <buffer> <expr> <C-g> unite#do_action('vimshell')
+  inoremap <silent> <buffer> <expr> <C-g> unite#do_action('vimshell')
 endfunction
 
 let g:unite_source_file_mru_limit = 200
