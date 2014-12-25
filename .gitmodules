@@ -34,3 +34,6 @@
 [submodule ".zsh/opp.zsh"]
 	path = .zsh/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh.git
+[submodule ".zsh/zsh-notify"]
+	path = .zsh/zsh-notify
+	url = https://github.com/marzocchi/zsh-notify.git
