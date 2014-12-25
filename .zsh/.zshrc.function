@@ -31,3 +31,22 @@ ls_abbrev() {
     fi
 }
 
+# cd-gitroot
+fpath=($HOME/.zsh/cd-gitroot(N-/) $fpath)
+
+autoload -Uz cd-gitroot
+alias cdu='cd-gitroot'
+
+# cd-bookmark
+fpath=($HOME/.zsh/cd-bookmark(N-/) $fpath)
+
+autoload -Uz cd-bookmark
+alias b='cd-bookmark'
+
+# zsh-completions
+fpath=($HOME/.zsh/zsh-completions/src $fpath)
+autoload -U compinit; compinit 
+
+# opp.zsh
+source $HOME/.zsh/opp.zsh/opp.zsh
+source $HOME/.zsh/opp.zsh/opp/*.zsh

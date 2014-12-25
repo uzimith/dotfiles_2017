@@ -24,7 +24,8 @@ setopt noautoremoveslash
 setopt nolistbeep
 setopt extended_glob
 setopt ignoreeof
-bindkey -e
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
 # historical backward/forward search with linehead string binded to ^P/^N
 #
 autoload history-search-end
@@ -62,10 +63,6 @@ setopt hist_no_store
 # URLをコピペしたときに自動でエスケープ
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
-
-# 補完機能
-fpath=(~/.zsh/zsh-completions/src $fpath)
-autoload -U compinit; compinit 
 
 # エラーメッセージ本文出力に色付け
 e_normal=`echo -e "¥033[0;30m"`

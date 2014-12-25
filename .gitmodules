@@ -25,3 +25,12 @@
 [submodule "powerline"]
 	path = powerline
 	url = https://github.com/powerline/powerline.git
+[submodule ".zsh/cd-gitroot"]
+	path = .zsh/cd-gitroot
+	url = https://github.com/mollifier/cd-gitroot.git
+[submodule ".zsh/cd-bookmark"]
+	path = .zsh/cd-bookmark
+	url = https://github.com/mollifier/cd-bookmark
+[submodule ".zsh/opp.zsh"]
+	path = .zsh/opp.zsh
+	url = https://github.com/hchbaw/opp.zsh.git
