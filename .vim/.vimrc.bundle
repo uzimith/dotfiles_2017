@@ -88,6 +88,7 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line' " l
 NeoBundle 'kana/vim-textobj-entire' " e
+NeoBundle "kana/vim-textobj-function"
 NeoBundle 'thinca/vim-textobj-between.git' " f{char}
 NeoBundle 'camelcasemotion' ",w ,e ,b
 " NeoBundle 'h1mesuke/textobj-wiw'
