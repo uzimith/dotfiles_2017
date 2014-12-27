@@ -537,11 +537,11 @@ endfunction
 
 function! s:vimfiler_my_settings()
   " vimfilerで開く
-  nnoremap <silent> <buffer> <expr> <C-e> vimfiler#do_action('tabvimfiler')
-  inoremap <silent> <buffer> <expr> <C-e> vimfiler#do_action('tabvimfiler')
+  nnoremap <silent> <buffer> <expr> <C-g> vimfiler#do_action('tabvimfiler')
+  inoremap <silent> <buffer> <expr> <C-g> vimfiler#do_action('tabvimfiler')
   " vimshellで開く
-  nnoremap <silent> <buffer> <expr> <C-s> vimfiler#do_action('tabvimshell')
-  inoremap <silent> <buffer> <expr> <C-s> vimfiler#do_action('tabvimshell')
+  nnoremap <silent> <buffer> <expr> <C-f> vimfiler#do_action('tabvimshell')
+  inoremap <silent> <buffer> <expr> <C-f> vimfiler#do_action('tabvimshell')
   if exists('b:vimfiler')
     if exists('b:vimfiler.context') && b:vimfiler.context.profile_name == 'ftree'
       nnoremap <silent><buffer> e :call <SID>vimfiler_tree_edit('open')<CR>
@@ -700,7 +700,14 @@ augroup END
 nmap <Leader>ob <Plug>(openbrowser-open)
 vmap <Leader>ob <Plug>(openbrowser-open)
 " カーソル下のキーワードをググる
-nnoremap <Leader>ok :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
+nmap <Leader>ok :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
+vmap <Leader>ok <Plug>(openbrowser-search)
+" }}}
+" text-object {{{
+omap iF <Plug>(textobj-function-i)
+omap aF <Plug>(textobj-function-a)
+vmap iF <Plug>(textobj-function-i)
+vmap aF <Plug>(textobj-function-a)
 " }}}
 
 "
