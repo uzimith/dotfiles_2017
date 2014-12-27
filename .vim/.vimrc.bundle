@@ -20,71 +20,31 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-"vim
+"
+" coding
+"
 NeoBundle 'Lokaltog/vim-easymotion'
 "コメントアウト
 NeoBundle 'tomtom/tcomment_vim'
-"Unite.vim
-NeoBundleLazy "Shougo/unite.vim", {
-\   'autoload' : {
-\       'commands' : [ "Unite" ]
-\   }
-\}
-NeoBundle 'Shougo/unite-ssh'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle "osyo-manga/unite-filetype"
-NeoBundle 'osyo-manga/unite-quickrun_config'
-NeoBundle 'koron/codic-vim'
-NeoBundle 'rhysd/unite-codic.vim'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'liquidz/vimfiler-sendto'
-NeoBundle 'tell-k/vim-browsereload-mac'
 "fを連打可能に
 NeoBundle 'rhysd/clever-f.vim'
-" clipboard
-NeoBundle 'git://github.com/kana/vim-fakeclip.git'
-" tmux
-NeoBundle 'christoomey/vim-tmux-navigator'
-"Shell
-NeoBundle 'Shougo/vimshell.vim'
-"Filer
-NeoBundle 'Shougo/vimfiler'
 "undoをツリー形式で表示
 NeoBundle "sjl/gundo.vim"
 "インデント
 NeoBundle 'nathanaelkane/vim-indent-guides'
 "VisualModeの機能向上
 NeoBundle 'kana/vim-niceblock'
-"M-!で切り替え
-NeoBundle 'AndrewRadev/switch.vim'
-"vim内実行
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'ujihisa/shadow.vim'
-NeoBundle "osyo-manga/shabadou.vim"
-"自動でカレントディレクトリを操作
-NeoBundle 'airblade/vim-rooter'
-"サブモード
-NeoBundle 'kana/vim-submode'
 "補完・スニペット
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
-"自動エラーチェック
-NeoBundle 'scrooloose/syntastic'
+"M-!で切り替え
+NeoBundle 'AndrewRadev/switch.vim'
 "括弧自動補完
 NeoBundle "kana/vim-smartinput"
 NeoBundle "cohama/vim-smartinput-endwise"
 "コード整形
 NeoBundle 'Align'
-"ブラウザで開く
-NeoBundle 'tyru/open-browser.vim'
-"検索置換
-NeoBundle 'rking/ag.vim'
-NeoBundle 'thinca/vim-qfreplace'
-" link tmux
-NeoBundle 't9md/vim-choosewin'
 "text-object
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line' " l
@@ -103,11 +63,68 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/unite-gist'
 NeoBundle 'kmnk/vim-unite-giti.git'
+"
+" file
+"
+"Unite.vim
+NeoBundleLazy "Shougo/unite.vim", {
+\   'autoload' : {
+\       'commands' : [ "Unite" ]
+\   }
+\}
+NeoBundle 'Shougo/unite-ssh'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle "osyo-manga/unite-filetype"
+NeoBundle 'osyo-manga/unite-quickrun_config'
+NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim'
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'liquidz/vimfiler-sendto'
+"Filer
+NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : 'vimfiler', 'commands' : ['VimFiler']}}
+"自動でカレントディレクトリを操作
+NeoBundle 'airblade/vim-rooter'
+"検索置換
+NeoBundle 'rking/ag.vim'
+NeoBundle 'thinca/vim-qfreplace'
+
+"
+" programming
+"
+"vim内実行
+NeoBundleLazy 'thinca/vim-quickrun', {'autoload' : {'commands' : ["QuickRun"] }}
+NeoBundleLazy 'ujihisa/shadow.vim', {'depends' : ["thinca/vim-quickrun"] }
+NeoBundleLazy "osyo-manga/shabadou.vim", {'depends' : ["thinca/vim-quickrun"] }
+"自動エラーチェック
+NeoBundle 'scrooloose/syntastic'
+
+"
+" utilities
+"
+"Shell
+NeoBundleLazy 'Shougo/vimshell.vim', {'autoload' : {'commands' : ["VimShell"] }}
+" clipboard
+NeoBundle 'git://github.com/kana/vim-fakeclip.git'
+" tmux
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'tell-k/vim-browsereload-mac'
 " dash
 NeoBundle 'rizzatti/funcoo.vim'
 NeoBundle 'rizzatti/dash.vim'
+"ブラウザで開く
+NeoBundle 'tyru/open-browser.vim'
+"サブモード
+NeoBundle 'kana/vim-submode'
+" link tmux
+NeoBundle 't9md/vim-choosewin'
 " taglist
 NeoBundle 'taglist.vim'
+
+"
+" language
+"
 "ruby
 NeoBundleLazy 'vim-ruby/vim-ruby', {"autoload": {"filetypes": ["rb", "erb"]}}
 NeoBundleLazy 'todesking/ruby_hl_lvar.vim', {"autoload": {"filetypes": ["rb", "erb"]}}
