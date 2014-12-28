@@ -121,6 +121,8 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 't9md/vim-choosewin'
 " taglist
 NeoBundle 'taglist.vim'
+"
+NeoBundle 'itchyny/lightline.vim'
 
 "
 " language
