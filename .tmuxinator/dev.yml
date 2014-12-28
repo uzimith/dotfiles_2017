@@ -1,0 +1,8 @@
+# ~/.tmuxinator/dev.yml
+
+name: dev
+root: 
+
+windows:
+  - editor: vim
+  - shell:
