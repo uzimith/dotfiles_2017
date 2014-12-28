@@ -30,10 +30,6 @@ set lazyredraw
 " 高速ターミナル接続を行う
 set ttyfast
 
-" Powerline
-set laststatus=2
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-
 let g:solarized_termtrans=1
 set background=dark
 colorscheme solarized

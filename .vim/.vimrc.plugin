@@ -820,6 +820,7 @@ endfunction
 au BufRead,BufNewFile,BufReadPre *.coffee,*.js call JasmineSetting()
 " }}}
 " powerline {{{
+set laststatus=2
 set rtp+=~/Config/dotfiles/powerline/powerline/bindings/vim
 " }}}
 
