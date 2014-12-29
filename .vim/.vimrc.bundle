@@ -162,6 +162,7 @@ NeoBundleLazy 'tpope/vim-markdown', {"autoload": {"filetypes": ["markdown"]}}
 "php
 NeoBundleLazy 'StanAngeloff/php.vim', {"autoload": {"filetypes": ["php"]}}
 NeoBundleLazy 'beyondwords/vim-twig', {"autoload": {"filetypes": ["twig"]}}
+NeoBundleLazy 'violetyk/cake.vim', {"autoload": {"filetypes": ["php"]}}
 "Go
 NeoBundleLazy 'vim-jp/vim-go-extra', {"autoload": {"filetypes": ["go"]}}
 NeoBundleLazy 'dgryski/vim-godef', {"autoload": {"filetypes": ["go"]}}
