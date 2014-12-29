@@ -63,6 +63,8 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/unite-gist'
 NeoBundle 'kmnk/vim-unite-giti.git'
+NeoBundle 'idanarye/vim-merginal'
+NeoBundle 'cohama/agit.vim'
 "
 " file
 "

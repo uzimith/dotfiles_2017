@@ -77,7 +77,7 @@ endif
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
 " }}}
-" Fugitive.vim {{{
+" git {{{
 
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
@@ -88,6 +88,7 @@ nnoremap <Leader>gc :<C-u>Gcommit<CR>
 nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
 nnoremap <Leader>gp :<C-u>Git push<CR>
 nnoremap <Leader>gb :<C-u>Gblame<CR>
+nnoremap <Leader>gm :<C-u>Merginal<CR>
 " }}}
 " gist-vim {{{
 let g:gist_open_browser_after_post = 1
@@ -301,9 +302,15 @@ nnoremap <silent> [unite]t  :<C-u>Unite tags<CR>
 "マッピングを表示
 nnoremap <silent> [unite]h  :<C-u>Unite -no-split output:map<CR>
 "grep
-nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
+nnoremap <silent> [unite]G :<C-u>Unite -no-quit grep<CR>
 "Codic
 nnoremap <silent> [unite]c :<C-u>Unite -no-split codic<CR>
+"git
+nnoremap <silent> [unite]gb :<C-u>Unite -no-split giti/branch<CR>
+nnoremap <silent> [unite]gc :<C-u>Unite -no-split giti/config<CR>
+nnoremap <silent> [unite]gl :<C-u>Unite -no-split giti/log<CR>
+nnoremap <silent> [unite]gr :<C-u>Unite -no-split giti/remote<CR>
+nnoremap <silent> [unite]gs :<C-u>Unite -no-split giti/status<CR>
 "search
 nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
 nnoremap <silent> / :<C-u>Unite -buffer-name=search line:all -start-insert<CR>
