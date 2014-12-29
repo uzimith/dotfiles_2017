@@ -1,3 +1,5 @@
+# cd
+alias cd='~/bin/cd'
 # ls
 alias ls='ls --color=auto'
 alias l='ls -lAFh --color=auto'

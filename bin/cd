@@ -1,0 +1,15 @@
+#! /usr/local/bin/zsh
+# http://d.hatena.ne.jp/hi_igu/20110623
+
+histf=$HOME/.zsh_history
+
+if [ $# -eq 1 ]; then
+	builtin cd $1
+	if [ $? -ne 0 ] ; then
+	  return 1
+	fi
+	echo "cd" $PWD >> $histf
+	fc -R
+else
+	builtin cd $*
+fi
