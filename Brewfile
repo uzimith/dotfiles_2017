@@ -3,7 +3,6 @@ update
 # Add Repository
 tap homebrew/versions
 tap homebrew/binary
-tap sanemat/font
 # homebrew-cask
 # Packages
 install zsh
@@ -25,12 +24,15 @@ install rbenv
 install ruby-build
 install ruby
 install node
-install ricty --powerline
 install sqlite3
 install wget
 install hub
 install ctags
 install mysql
+tap sanemat/font
+install ricty --powerline
+tap peco/peco
+install peco
 
 # .dmg
 install caskroom/cask/brew-cask

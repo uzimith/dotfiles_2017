@@ -5,7 +5,7 @@
 # - xcode-select --install
 
 # dotfiles
-DOT_FILE=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc)
+DOT_FILE=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc .peco)
 
 for file in ${DOT_FILES[@]}
 do
