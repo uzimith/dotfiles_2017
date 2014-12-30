@@ -2,7 +2,10 @@
  
 name: vagrant
 root: 
- 
+
+pre:
+  - vagrant up
+
 windows:
   - editor:
       layout: main-vertical
