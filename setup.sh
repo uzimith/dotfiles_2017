@@ -5,7 +5,7 @@
 # - xcode-select --install
 
 # dotfiles
-DOT_FILE=(.vim .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc .peco)
+DOT_FILES=(.vim .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc .peco)
 
 for file in ${DOT_FILES[@]}
 do
@@ -19,7 +19,7 @@ ln -s $HOME/Config/dotfiles/.vim/.vimshrc $HOME/.vimshrc
 ln -s $HOME/Config/dotfiles/powerline-config $HOME/.config/powerline
 
 # osxc
- sudo easy_install pip
+sudo easy_install pip
 sudo pip install ansible
 cd starter
 sudo ansible-galaxy install -r requirements.yml
