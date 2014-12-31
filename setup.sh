@@ -16,5 +16,8 @@ done
 ln -s $HOME/Config/dotfiles/.vim/.vimshrc $HOME/.vimshrc
 ln -s $HOME/Config/dotfiles/powerline-config $HOME/.config/powerline
 
-# homebrew
-brew bundle
+# osxc
+if [ `which ansible` ]; then
+    sudo pip install ansible
+fi
+ansible-galaxy install -r starter/requirements.yml && ansible-playbook starter/desktop.yml

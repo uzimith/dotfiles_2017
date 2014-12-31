@@ -4,7 +4,8 @@ dotfiles
 ## Setup
 
 ```
-$ git clone https://github.com/uzimith/dotfiles.git ~/Config/dotfiles
+$ mkdir Config
+$ git clone --recursive https://github.com/uzimith/dotfiles.git ~/Config/dotfiles
 $ cd ~/Config/dotfiles
 $ ./setup.sh
 ```
