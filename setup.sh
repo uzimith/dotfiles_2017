@@ -19,5 +19,8 @@ ln -s $HOME/Config/dotfiles/.vim/.vimshrc $HOME/.vimshrc
 ln -s $HOME/Config/dotfiles/powerline-config $HOME/.config/powerline
 
 # osxc
+ sudo easy_install pip
 sudo pip install ansible
-ansible-galaxy install -r starter/requirements.yml && ansible-playbook starter/desktop.yml
+cd starter
+sudo ansible-galaxy install -r requirements.yml
+ansible-playbook desktop.yml
