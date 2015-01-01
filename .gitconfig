@@ -18,5 +18,6 @@
 	protocol = https
 [alias]
     co = checkout
+    s = status --short
 [url "git@github.com:"]
 	pushinsteadof = https://github.com/

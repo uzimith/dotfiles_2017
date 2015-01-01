@@ -9,15 +9,20 @@ bind main R !git rebase -i %(commit)
 
 bind diff R !git rebase -i %(commit)
 
-bind status <Ctrl-p> !git push origin
+bind status m :enter
+bind status P !git push origin
+bind status <Ctrl-a> !git add -A
 bind status A !git commit --amend
+bind stage n :next
+bind stage p :previous
 
 bind refs n !git checkout -b %(prompt) %(branch)
 bind refs N !git checkout -b feature/%(prompt) %(branch)
 bind refs m !git merge %(branch)
 bind refs r !git rebase %(branch)
-  
+
 bind stash s !git stash save %(prompt)
+
 
 # move
 bind main G none

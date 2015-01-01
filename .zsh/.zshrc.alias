@@ -35,6 +35,11 @@ alias refe='nocorrect refe'
 #npm
 alias ne='PATH=$(npm bin):$PATH'
 
+# git
+alias g='git'
+alias t='tig'
+alias ta='tig --all'
+
 #chrome
 alias goapp=~/google-cloud-sdk/platform/google_appengine/goapp
 
