@@ -1,0 +1,16 @@
+name: pktool
+root: ~/dev/pktool
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - be guard
+  - shell:
+      layout: even-horizontal
+      panes:
+        - be ruby pktool.rb
+        - be pry
+  - git: tig
+  - logs: tail -f log/development.log
