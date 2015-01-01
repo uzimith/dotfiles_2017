@@ -1,0 +1,34 @@
+######
+#key
+######
+bind main V !git revert %(commit)
+bind main <Ctrl-r> !git reset --hard %(commit)
+bind main r !git reset --soft %(commit)
+bind main <Ctrl-p> !git pull --rebase
+bind main R !git rebase -i %(commit)
+
+bind diff R !git rebase -i %(commit)
+
+bind status <Ctrl-p> !git push origin
+bind status A !git commit --amend
+
+bind refs n !git checkout -b %(prompt) %(branch)
+bind refs N !git checkout -b feature/%(prompt) %(branch)
+bind refs m !git merge %(branch)
+bind refs r !git rebase %(branch)
+  
+bind stash s !git stash save %(prompt)
+
+# move
+bind main G none
+bind generic J none
+bind generic K none
+bind generic g move-first-line
+bind generic G move-last-line
+bind generic J move-page-down
+bind generic K move-page-up
+
+######
+#disply
+######
+set main-view = id date author commit-title:graph=yes,refs=yes

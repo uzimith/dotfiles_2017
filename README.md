@@ -13,6 +13,7 @@ $ ./setup.sh
 ## Now Using
 
 - git
+    - tig
 - tmux
     - tmuxinator
 - Vim
