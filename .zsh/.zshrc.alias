@@ -79,6 +79,7 @@ alias vlc="open -a VLC.app"
 # suffix
 alias -s py=python
 alias -s rb=ruby
+alias -s go=go run
 alias -s hs=runhaskell
 alias -s html=firefox
 
