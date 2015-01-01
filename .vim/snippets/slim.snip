@@ -1,11 +1,18 @@
 snippet import
   link rel="import" href="${1}"${0}
 snippet pe
-  polymer-element name="${1:`expand("%:r")`}"${0}
+	link rel="import" href="/components/polymer/polymer.html"
+	
+	polymer-element name="${1:`expand("%:r")`}"${0}
+	  template
+	    sass:
+	  coffee:
+	    Polymer()
 snippet template
   template
 snippet polymer
   link rel="import" href="/components/polymer/polymer.html"
+
 # snippet template
 #   script#${1} type="text/x-template"
 #   ${0}
