@@ -2,12 +2,15 @@
 #key
 ######
 bind main V !git revert %(commit)
-bind main <Ctrl-r> !git reset --hard %(commit)
-bind main r !git reset --soft %(commit)
+bind main <Ctrl-r> !git reset --soft %(commit)
+bind main ! !git reset --hard %(commit)
 bind main <Ctrl-p> !git pull --rebase
 bind main R !git rebase -i %(commit)
+bind main m :enter
 
 bind diff R !git rebase -i %(commit)
+bind diff n :next
+bind diff p :previous
 
 bind status m :enter
 bind status P !git push origin

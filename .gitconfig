@@ -1,23 +1,30 @@
 [user]
-	name = uzimith
-	email = uzimith.x9@gmail.com
+  name = uzimith
+  email = uzimith.x9@gmail.com
 [github]
-	user = uzimith
+  user = uzimith
 [core]
-	editor = vim
-	excludesfile = /opt/boxen/config/git/gitignore
+  editor = vim
+  excludesfile = /opt/boxen/config/git/gitignore
 [push]
-	default = simple
+  default = simple
 [diff]
-	external= vimdiff
+  external= vimdiff
 [pager]
-	diff =
+  diff =
 [mergetool]
-	keepBackup = true
+  keepBackup = true
 [hub]
-	protocol = https
+  protocol = https
 [alias]
-    co = checkout
-    s = status --short
+  co = checkout
+  s = status --short
+  a = add
+  c = commit
+  l = pull
+  p = push
+  rh = reset --soft HEAD
+  rhh = reset --hard HEAD
+  now = n
 [url "git@github.com:"]
-	pushinsteadof = https://github.com/
+  pushinsteadof = https://github.com/
