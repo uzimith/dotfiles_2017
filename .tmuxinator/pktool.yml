@@ -12,5 +12,7 @@ windows:
       panes:
         - be ruby pktool.rb
         - be pry
-  - git: tig
+  - git:
+     - git fetch --prune && git status --short --branch
+     - tig
   - logs: tail -f log/development.log

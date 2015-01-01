@@ -21,6 +21,10 @@ windows:
         - mysql:
           - vagrant ssh
           - mysql -u root -proot
+  - shell: 
+  - git:
+     - git fetch --prune && git status --short --branch
+     - tig
   - log:
       layout: main-vertical
       panes:
