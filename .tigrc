@@ -15,6 +15,7 @@ bind diff p :previous
 bind status m :enter
 bind status P !git push origin
 bind status <Ctrl-a> !git add -A
+bind status <Ctrl-p> !git push origin
 bind status A !git commit --amend
 bind stage n :next
 bind stage p :previous
@@ -29,12 +30,14 @@ bind stash s !git stash save %(prompt)
 
 # move
 bind main G none
+bind none R none
 bind generic J none
 bind generic K none
 bind generic g move-first-line
 bind generic G move-last-line
 bind generic J move-page-down
 bind generic K move-page-up
+bind generic ; :refresh
 
 ######
 #disply
