@@ -31,7 +31,7 @@ NeoBundle 'rhysd/clever-f.vim'
 "undoをツリー形式で表示
 NeoBundle "sjl/gundo.vim"
 "インデント
-NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'Yggdroot/indentLine'
 "VisualModeの機能向上
 NeoBundle 'kana/vim-niceblock'
 "補完・スニペット
@@ -130,16 +130,21 @@ NeoBundle 'itchyny/lightline.vim'
 " language
 "
 "ruby
-NeoBundleLazy 'vim-ruby/vim-ruby', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'todesking/ruby_hl_lvar.vim', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'ruby-matchit', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'ujihisa/unite-rake', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
+NeoBundleLazy 'vim-ruby/vim-ruby', {"autoload": {"filetypes": ["ruby"]}}
+NeoBundleLazy 'todesking/ruby_hl_lvar.vim', {"autoload": {"filetypes": ["ruby"]}}
+NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["ruby"]}}
+NeoBundleLazy 'ruby-matchit', {"autoload": {"filetypes": ["ruby"]}}
+NeoBundleLazy 'ujihisa/unite-rake', {"autoload": {"filetypes": ["ruby"]}}
+NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["ruby"]}}
+NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["ruby"]}}
+
+"python
+NeoBundleLazy 'davidhalter/jedi-vim', {"autoload": {"filetypes": ["python"]}}
+
 "js
 NeoBundleLazy 'leshill/vim-json.git', {"autoload": {"filetypes": ["json"]}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {"autoload": {"filetypes": ["coffee"]}}
+
 "web
 NeoBundleLazy 'cakebaker/scss-syntax.vim',{"autoload": {"filetypes": ["scss", "sass"]}}
 NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "php", "erb"]}}
@@ -157,15 +162,19 @@ NeoBundleLazy 'ujihisa/ref-hoogle', {"autoload": {"filetypes": ["haskell"]}}
 NeoBundleLazy 'ujihisa/unite-haskellimport', {"autoload": {"filetypes": ["haskell"]}}
 " Rust
 NeoBundleLazy 'wting/rust.vim', {"autoload": {"filetypes": ["rust"]}}
+
 "markdown
 NeoBundleLazy 'tpope/vim-markdown', {"autoload": {"filetypes": ["markdown"]}}
+
 "php
 NeoBundleLazy 'StanAngeloff/php.vim', {"autoload": {"filetypes": ["php"]}}
 NeoBundleLazy 'beyondwords/vim-twig', {"autoload": {"filetypes": ["twig"]}}
 NeoBundleLazy 'violetyk/cake.vim', {"autoload": {"filetypes": ["php"]}}
+
 "Go
 NeoBundleLazy 'vim-jp/vim-go-extra', {"autoload": {"filetypes": ["go"]}}
 NeoBundleLazy 'dgryski/vim-godef', {"autoload": {"filetypes": ["go"]}}
+
 "color
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
