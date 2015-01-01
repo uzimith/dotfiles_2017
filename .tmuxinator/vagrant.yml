@@ -24,7 +24,7 @@ windows:
   - shell: 
   - git:
      - git fetch --prune && git status --short --branch
-     - tig
+     - tig --all
   - log:
       layout: main-vertical
       panes:

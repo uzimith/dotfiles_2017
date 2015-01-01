@@ -13,5 +13,7 @@ windows:
         - vim:
           - cd source
           - vim
-  - shell: git fetch --prune && git status --short --branch
-  - git: tig
+  - shell: 
+  - git:
+    - git fetch --prune && git status --short --branch
+    - tig --all

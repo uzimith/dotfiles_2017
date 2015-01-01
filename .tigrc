@@ -24,13 +24,14 @@ bind refs n !git checkout -b %(prompt) %(branch)
 bind refs N !git checkout -b feature/%(prompt) %(branch)
 bind refs m !git merge %(branch)
 bind refs r !git rebase %(branch)
+bind refs c !git checkout %(branch)
 
 bind stash s !git stash save %(prompt)
 
 
 # move
 bind main G none
-bind none R none
+bind generic R none
 bind generic J none
 bind generic K none
 bind generic g move-first-line

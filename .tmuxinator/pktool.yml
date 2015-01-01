@@ -13,6 +13,6 @@ windows:
         - be ruby pktool.rb
         - be pry
   - git:
-     - git fetch --prune && git status --short --branch
-     - tig
+    - git fetch --prune && git status --short --branch
+    - tig --all
   - logs: tail -f log/development.log

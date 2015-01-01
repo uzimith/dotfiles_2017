@@ -25,6 +25,8 @@ windows:
         - vim
         - guard
   - server: bundle exec rails s
-  - shell: git fetch --prune && git status --short --branch
-  - git: tig
+  - shell: 
+  - git:
+    - git fetch --prune && git status --short --branch
+    - tig --all
   - logs: tail -f log/development.log

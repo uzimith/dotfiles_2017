@@ -7,5 +7,5 @@ windows:
   - editor: vim
   - shell: 
   - git:
-     - git fetch --prune && git status --short --branch
-     - tig
+    - git fetch --prune && git status --short --branch
+    - tig --all
