@@ -257,12 +257,11 @@ noremap ! :Switch<CR>
 " file
 "
 " Unite.vim {{{
-" soure  {{{
+" source  {{{
 nnoremap    [unite]   <Nop>
 nmap    s [unite]
 
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-
 " 全部乗せ
 nnoremap <silent> [unite]f  :<C-u>Unite -no-split -buffer-name=files file file/new<CR>
 " ファイル一覧
