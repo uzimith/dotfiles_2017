@@ -135,10 +135,6 @@ let g:surround_custom_mapping.python = {
       \ '[':  "[\r]",
       \ }
 " }}}
-" endwise.vim {{{
-
-let g:endwise_no_mappings=1
-" }}}
 " easymotion {{{
 
 " ホームポジションに近いキーを使う
@@ -252,6 +248,60 @@ let g:expand_region_text_objects = {
 " }}}
 " switch.vim {{{
 noremap ! :Switch<CR>
+" }}}
+" smartinput {{{
+if neobundle#tap('vim-smartinput')
+  call neobundle#config({
+        \   'autoload' : {
+        \     'insert' : 1
+        \   }
+        \ })
+
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    call smartinput_endwise#define_default_rules()
+  endfunction
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-smartinput-endwise')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    " neosnippet and neocomplete compatible
+    call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
+    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
+          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+          \ neocomplete#close_popup()
+  endfunction
+  call neobundle#untap()
+endif
+
+" classとかの定義時に:までを入れる
+call smartinput#define_rule({
+\   'at'       : '^\s*\%(\<def\>\|\<if\>\|\<for\>\|\<while\>\|\<class\>\|\<with\>\)\s*\w\+.*\%#',
+\   'char'     : '(',
+\   'input'    : '():<Left><Left>',
+\   'filetype' : ['python'],
+\   })
+" が、すでに:がある場合は重複させない. (smartinputでは、atの定義が長いほど適用の優先度が高くなる)
+call smartinput#define_rule({
+\   'at'       : '^\s*\%(\<def\>\|\<if\>\|\<for\>\|\<while\>\|\<class\>\|\<with\>\)\s*\w\+.*\%#.*:',
+\   'char'     : '(',
+\   'input'    : '()<Left>',
+\   'filetype' : ['python'],
+\   })
+" 末尾:の手前でも、エンターとか:で次の行にカーソルを移動させる
+call smartinput#define_rule({
+\   'at'       : '^\s*\%(\<def\>\|\<if\>\|\<for\>\|\<while\>\|\<class\>\|\<with\>\)\s*\w\+.*\%#:$',
+\   'char'     : ':',
+\   'input'    : '<Right><CR>',
+\   'filetype' : ['python'],
+\   })
+call smartinput#define_rule({
+\   'at'       : '^\s*\%(\<def\>\|\<if\>\|\<for\>\|\<while\>\|\<class\>\|\<with\>\)\s*\w\+.*\%#:$',
+\   'char'     : '<CR>',
+\   'input'    : '<Right><CR>',
+\   'filetype' : ['python'],
+\   })
 " }}}
 "
 " file
