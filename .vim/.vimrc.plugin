@@ -42,7 +42,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
@@ -841,27 +840,12 @@ let g:haskell_conceal = 0
 nnoremap <silent> [unite]hi :<C-u>Unite haskellimport<CR>
 " }}}
 " coffee {{{
-
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
-" }}}
-" vim-coffee-script {{{
-
 " 保存時にコンパイル
 " autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
 " }}}
-" jasmine.vim {{{
-
-" ファイルタイプを変更
-function! JasmineSetting()
-  au BufRead,BufNewFile *Helper.js,*Spec.js  set filetype=jasmine.javascript
-  au BufRead,BufNewFile *Helper.coffee,*Spec.coffee  set filetype=jasmine.coffee
-  au BufRead,BufNewFile,BufReadPre *Helper.coffee,*Spec.coffee  let b:quickrun_config = {'type' : 'coffee'}
-  call jasmine#load_snippets()
-  map <buffer> <leader>m :JasmineRedGreen<CR>
-  command! JasmineRedGreen :call jasmine#redgreen()
-  command! JasmineMake :call jasmine#make()
-endfunction
-au BufRead,BufNewFile,BufReadPre *.coffee,*.js call JasmineSetting()
+" jsx {{{
+au BufRead,BufNewFile,BufReadPre *.jsx   set filetype=jsx
 " }}}
 " powerline {{{
 set laststatus=2
@@ -925,6 +909,14 @@ endfunction
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+" }}}
+" python {{{
+let g:jedi#auto_initialization = 0
+let g:jedi#auto_vim_configuration = 0
+autocmd FileType python setlocal completeopt-=preview
+
+let g:jedi#rename_command = ""
+let g:jedi#documentation_command = ""
 " }}}
 
 " vim: foldmethod=marker

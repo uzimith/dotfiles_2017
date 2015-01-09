@@ -144,6 +144,7 @@ NeoBundleLazy 'davidhalter/jedi-vim', {"autoload": {"filetypes": ["python"]}}
 "js
 NeoBundleLazy 'leshill/vim-json.git', {"autoload": {"filetypes": ["json"]}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {"autoload": {"filetypes": ["coffee"]}}
+NeoBundleLazy 'jsx/jsx.vim.git', {"autoload": {"filetypes": ["jsx"]}}
 
 "web
 NeoBundleLazy 'cakebaker/scss-syntax.vim',{"autoload": {"filetypes": ["scss", "sass"]}}
