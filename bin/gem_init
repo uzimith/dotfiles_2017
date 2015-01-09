@@ -1,0 +1,4 @@
+for i in `gem list --no-versions`; do gem uninstall -aIx $i; done
+gem install pry
+gem install tmuxinator
+gem install bundler
