@@ -2,7 +2,7 @@
 ## PROMPT ##
 ##=========#
 powerline-daemon -q
-. ~/Config/dotfiles/powerline/powerline/bindings/zsh/powerline.zsh
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 # ls
 if [ `which gdircolors` ]; then
   alias dircolors='gdircolors'
