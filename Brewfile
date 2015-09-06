@@ -33,6 +33,8 @@ tap sanemat/font
 install ricty --powerline
 tap peco/peco
 install peco
+install java
+install gibo
 
 # .dmg
 install caskroom/cask/brew-cask
@@ -52,6 +54,7 @@ cask install sketch
 cask install skype
 cask install vagrant
 cask install virtualbox
+cask install android-studio
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
 # Remove outdated versions
 cleanup
