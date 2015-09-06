@@ -3,3 +3,5 @@ alias wifilist='networksetup -listallhardwareports'
 alias wifiget='networksetup -getairportnetwork en0'
 alias wifiset='networksetup -setairportnetwork en0'
 alias wifipower='networksetup -setairportpower en0'
+alias onkeyboard="sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/"
+alias offkeyboard="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/"
