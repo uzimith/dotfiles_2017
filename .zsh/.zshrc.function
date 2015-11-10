@@ -22,18 +22,19 @@ source $HOME/.zsh/opp.zsh/opp/*.zsh
 source $HOME/.zsh/zsh-notify/notify.plugin.zsh
 
 # peco
-function peco-select-history() {
+function peco-history() {
     local tac
     if which tac > /dev/null; then
         tac="tac"
     else
         tac="tail -r"
     fi
-    BUFFER=$(history -n 1 | \
+    BUFFER=$(\history -n 1 | \
         eval $tac | \
         peco --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle clear-screen
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+zle -N peco-history
+bindkey '^y' peco-history
+
