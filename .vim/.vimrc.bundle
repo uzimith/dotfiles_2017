@@ -176,6 +176,10 @@ NeoBundleLazy 'violetyk/cake.vim', {"autoload": {"filetypes": ["php"]}}
 NeoBundleLazy 'vim-jp/vim-go-extra', {"autoload": {"filetypes": ["go"]}}
 NeoBundleLazy 'dgryski/vim-godef', {"autoload": {"filetypes": ["go"]}}
 
+"typescript
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'clausreinke/typescript-tools.vim'
+
 "color
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
