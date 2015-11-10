@@ -30,6 +30,7 @@ bind refs c !@git checkout %(branch)
 
 bind stash s !@git stash save %(prompt)
 
+bind generic ø @sh -c "printf '%s' %(commit) | pbcopy""'"
 
 # move
 bind main G none
