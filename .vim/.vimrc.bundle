@@ -179,6 +179,7 @@ NeoBundleLazy 'dgryski/vim-godef', {"autoload": {"filetypes": ["go"]}}
 "typescript
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'clausreinke/typescript-tools.vim'
+NeoBundle 'Quramy/tsuquyomi'
 
 "color
 NeoBundle 'altercation/vim-colors-solarized'
