@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dotfiles
-DOT_FILES=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc .peco)
+DOT_FILES=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc .peco .tigrc)
 
 for file in ${DOT_FILES[@]}
 do
