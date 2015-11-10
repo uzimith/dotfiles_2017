@@ -36,5 +36,5 @@ function peco-history() {
     zle clear-screen
 }
 zle -N peco-history
-bindkey '^y' peco-history
+bindkey -a 'sm' peco-history
 
