@@ -12,7 +12,7 @@ alias b='cd-bookmark'
 
 # zsh-completions
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
-autoload -U compinit; compinit 
+autoload -U compinit; compinit -u
 
 # opp.zsh
 source $HOME/.zsh/opp.zsh/opp.zsh
