@@ -1,7 +1,0 @@
-alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-alias wifilist='networksetup -listallhardwareports'
-alias wifiget='networksetup -getairportnetwork en0'
-alias wifiset='networksetup -setairportnetwork en0'
-alias wifipower='networksetup -setairportpower en0'
-alias onkeyboard="sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/"
-alias offkeyboard="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/"

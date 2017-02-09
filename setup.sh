@@ -1,19 +1,13 @@
 #!/bin/bash
 
 # dotfiles
-DOT_FILES=(.vim .vimrc .xvimrc .emacs.d .zshrc .zshenv .zsh .tmux.conf .tmuxinator .gitconfig .ssh bin .vimperatorrc .vimperator .xvimrc .middleman .pryrc .peco .tigrc)
+DOT_FILES=(.config .tmux.conf .tmuxinator .gitconfig .gitignore_global .ssh bin .tigrc .vimperatorrc .vimperator .pryrc .eslintrc.json)
 
 for file in ${DOT_FILES[@]}
 do
     rm $HOME/$file
-    ln -s $HOME/Config/dotfiles/$file $HOME/$file
+    ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
-mkdir ~/.config
-
-ln -s $HOME/Config/dotfiles/.vim/.vimshrc $HOME/.vimshrc
-ln -s $HOME/Config/dotfiles/powerline-config $HOME/.config/powerline
-
-brew install rcmdnk/file/brew-file
-brew file install -f Brewfile
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
 pip install git+git://github.com/powerline/powerline

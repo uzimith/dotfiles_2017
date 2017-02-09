@@ -1,1 +1,0 @@
-/Users/uzimith/.vimperator/vimperator-plugins/direct_bookmark.js

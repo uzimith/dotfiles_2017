@@ -1,4 +1,0 @@
-alias l='ls -l'
-alias la='ls -al'
-alias be='bundle exec'
-alias bi='bundle install --path ./.bundle'

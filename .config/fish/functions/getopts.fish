@@ -1,0 +1,1 @@
+/Users/uzimith/.config/fisherman/getopts/getopts.fish

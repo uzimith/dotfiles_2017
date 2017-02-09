@@ -1,1 +1,0 @@
-/Users/uzimith/.vimperator/vimperator-plugins/multi_requester.js
