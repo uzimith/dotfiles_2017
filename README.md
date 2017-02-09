@@ -10,6 +10,11 @@ cd ~/dotfiles
 bash setup.sh
 ```
 
+## Environment
+
+- OS X 10.12 Sierra
+- 2017/02
+
 ## Now Using
 
 - git
