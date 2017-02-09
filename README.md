@@ -4,10 +4,10 @@ dotfiles
 ## Setup
 
 ```
-$ mkdir Config
-$ git clone --recursive https://github.com/uzimith/dotfiles.git ~/Config/dotfiles
-$ cd ~/Config/dotfiles
-$ ./setup.sh
+cd ~
+git clone --recursive https://github.com/uzimith/dotfiles.git
+cd ~/dotfiles
+bash setup.sh
 ```
 
 ## Now Using
@@ -16,15 +16,16 @@ $ ./setup.sh
     - tig
 - tmux
     - tmuxinator
-- Vim
+- NeoVim
 - Vimperator
-- zsh
-    - cd-gitroot
-    - cd-bookmark
-    - zsh-cmpletions
-    - opp.zsh
-    - zsh-notify
-    - peco
+- fish
+- peco
 - powerline
+- karabiner
 - XVim
-- ~/binに置くスクリプト
+- eslint
+- ~/bin
+
+### cvim
+
+https://gist.github.com/uzimith/fc1068e505b923f7d93dfc329df4ffc7
