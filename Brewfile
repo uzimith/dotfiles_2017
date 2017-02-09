@@ -1,60 +1,26 @@
-# Make sure using latest Homebrew
-update
-# Add Repository
-tap homebrew/versions
-tap homebrew/binary
-# homebrew-cask
-# Packages
-install zsh
-install lua
-install macvim --with-lua
-install vim --with-lua
-install git
-install tmux
-install w3m
-install wget
-install coreutils
-install reattach-to-user-namespace
-install the_silver_searcher
-install jq
-install terminal-notifier
-install openssl
-install readline
-install rbenv
-install ruby-build
-install ruby
-install node
-install sqlite3
-install wget
-install hub
-install ctags
-install mysql
-tap sanemat/font
-install ricty --powerline
-tap peco/peco
-install peco
-install java
-install gibo
-
-# .dmg
-install caskroom/cask/brew-cask
-cask install alfred
-cask install iterm2
-cask install firefox
-cask install google-chrome
-cask install google-hangouts
-cask install google-japanese-ime
-cask install adobe-reader
-cask install caffeine
-cask install dropbox
-cask install evernote
-cask install heroku-toolbelt
-cask install kobito
-cask install sketch
-cask install skype
-cask install vagrant
-cask install virtualbox
-cask install android-studio
-cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
-# Remove outdated versions
-cleanup
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'sanemat/font'
+brew 'fish'
+brew 'git'
+brew 'ghq'
+brew 'gibo'
+brew 'openssl'
+brew 'lua'
+brew 'node'
+brew 'peco'
+brew 'jq'
+brew 'terminal-notifier'
+brew 'readline'
+brew 'sqlite'
+brew 'python'
+brew 'python3'
+brew 'ruby-build'
+brew 'rbenv'
+brew 'reattach-to-user-namespace'
+brew 'ripgrep'
+brew 'tig'
+brew 'tmux'
+brew 'wget'
+brew 'neovim/neovim/neovim'
+brew 'sanemat/font/ricty', args: ['with-powerline']

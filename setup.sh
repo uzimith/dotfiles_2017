@@ -9,5 +9,10 @@ do
     ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
+brew tap Homebrew/bundle
+brew bundle
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
+fisher
 pip install git+git://github.com/powerline/powerline
+pip install neovim
+pip3 install neovim
