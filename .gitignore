@@ -1,6 +1,7 @@
 .ssh/
 tags
 .DS_Store
+.sync
 fishd.*
 __*.fish
 .config/fish/functions/*.awk
