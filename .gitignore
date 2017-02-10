@@ -6,4 +6,5 @@ __*.fish
 .config/fish/functions/*.awk
 .config/fisherman
 .config/fish/conf.d
+.config/hub
 .netrwhist
