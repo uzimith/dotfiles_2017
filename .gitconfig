@@ -14,6 +14,8 @@
   keepBackup = true
 [hub]
   protocol = https
+[ghq]
+  root = ~/src
 [alias]
   co = checkout
   s = status --short
