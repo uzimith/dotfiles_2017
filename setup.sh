@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dotfiles
-DOT_FILES=(.config .tmux.conf .tmuxinator .gitconfig .gitignore_global .ssh bin .tigrc .vimperatorrc .vimperator .pryrc .eslintrc.json)
+DOT_FILES=(.config .hammerspoon .tmux.conf .tmuxinator .gitconfig .gitignore_global .ssh bin .tigrc .vimperatorrc .vimperator .pryrc .eslintrc.json)
 
 for file in ${DOT_FILES[@]}
 do

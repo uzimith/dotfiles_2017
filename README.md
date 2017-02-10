@@ -27,6 +27,7 @@ bash setup.sh
 - peco
 - powerline
 - karabiner
+- hammerspoon
 - XVim
 - eslint
 - ~/bin
