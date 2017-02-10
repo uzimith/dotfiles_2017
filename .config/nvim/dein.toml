@@ -42,7 +42,11 @@ repo = 'vim-airline/vim-airline'
 depends = ['tagbar', 'vim-fugitive']
 hook_add = '''
 let g:airline_powerline_fonts = 1
+
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 '''
 
 [[plugins]]
@@ -66,7 +70,6 @@ repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim', 'neoyank.vim']
 on_cmd = 'Denite'
 hook_add = '''
-
 nnoremap <silent> s` :<C-u>Denite filetype<CR>
 nnoremap <silent> sf :<C-u>Denite file_rec<CR>
 nnoremap <silent> sd :<C-u>DeniteBufferDir file_rec<CR>
@@ -136,6 +139,7 @@ let g:choosewin_keymap   = {
       \'t' : 'win_land',
       \}
 '''
+
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
