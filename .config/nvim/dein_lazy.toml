@@ -46,6 +46,13 @@ epends = 'neomru.vim'
 on_source = 'denite.nvim'
 
 [[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+hook_add = '''
+let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
 repo = 'zchee/deoplete-go'
 on_source = 'deoplete.nvim'
 build = 'make'
