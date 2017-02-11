@@ -4,8 +4,17 @@ tags
 .sync
 fishd.*
 __*.fish
-.config/fish/functions/*.awk
-.config/fisherman
-.config/fish/conf.d
+.config/fish/functions/fisher.fish
 .config/hub
 .netrwhist
+
+# fisherman
+.config/fisherman
+.config/fish/conf.d/z.fish
+.config/fish/functions/__z.fish
+.config/fish/functions/__z_add.fish
+.config/fish/functions/__z_complete.fish
+.config/fish/functions/__zo.fish
+.config/fish/functions/getopts.fish
+.config/fish/functions/z.awk
+.config/fish/functions/zadd.awk
