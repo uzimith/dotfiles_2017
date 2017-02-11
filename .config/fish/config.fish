@@ -3,9 +3,6 @@ export LANG='ja_JP.UTF-8'
 export LC_ALL='ja_JP.UTF-8'
 export EDITOR=vim
 
-# TODO
-# -- notify
-
 ##
 # PATH
 ##
@@ -72,11 +69,12 @@ alias vlc="open -a VLC.app"
 powerline-daemon -q
 set fish_function_path $fish_function_path "/usr/local/lib/python2.7/site-packages/powerline/bindings/fish"
 powerline-setup
-function fish_mode_prompt; end
+function fish_mode_prompt; end # fishのmodeを非表示
 
 ##
 # mac
 ##
+
 alias wifilist='networksetup -listallhardwareports'
 alias wifiget='networksetup -getairportnetwork en0'
 alias wifiset='networksetup -setairportnetwork en0'
