@@ -34,6 +34,7 @@ rbenv init - | source
 
 alias vim='nvim'
 alias l='ls -lAFh'
+alias rgf='ripgrep_glob'
 
 # process
 alias j="jobs -l"
