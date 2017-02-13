@@ -10,6 +10,7 @@ __*.fish
 
 # fisherman
 .config/fisherman
+.config/fish/completions/docker.fish
 .config/fish/conf.d/z.fish
 .config/fish/functions/__z.fish
 .config/fish/functions/__z_add.fish
