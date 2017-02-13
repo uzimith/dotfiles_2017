@@ -30,7 +30,7 @@ rbenv init - | source
 ##
 
 alias vim='nvim'
-alias l='ls -lAFh'
+alias l='ll | peco'
 alias rgf='ripgrep_glob'
 alias prg='peco_ripgrep_vim'
 
