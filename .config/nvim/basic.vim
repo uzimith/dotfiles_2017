@@ -24,6 +24,8 @@ set splitright
 set display=lastline
 set pumheight=10
 
+filetype plugin on
+
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
