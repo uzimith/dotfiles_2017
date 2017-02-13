@@ -1,8 +1,11 @@
-function ghq_new
+function ghq-new
+    set github 1
     getopts $argv | while read -l key value
         switch $key
             case g github
                 set github 1
+            case no-github
+                set github 0
             case p private
                 set hub_args $hub_args '-p'
             case _
@@ -32,6 +35,6 @@ function ghq_new
     git commit -m 'first commit'
     if test $github -eq 1
         hub $hub_args create
-        git push origin master
+        git push -u origin master
     end
 end
