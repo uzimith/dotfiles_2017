@@ -1,14 +1,12 @@
 function ripgrep_glob
-    echo $argv | read --local first rest
-    echo $first
-    switch $first
+    if test (count $argv) -ne 1
+        echo "error: too many arguments"
+        return 1
+    end
+    switch $argv
         case '*\**'
-            echo "2"
             rg --files -g $argv
         case '*'
-            echo "1"
-            echo "'*$first*'"
-            echo $rest
-            rg --files -g "'*$first*'"
+            rg --files -g "*$argv*"
     end
 end
