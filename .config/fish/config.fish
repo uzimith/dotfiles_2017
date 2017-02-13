@@ -16,6 +16,9 @@ set -gx PATH /usr/local/bin $PATH
 #set -gx PATH $HOME/.nodebrew/current/bin $PATH
 # ~/bin
 set -gx PATH $HOME/bin/ $PATH
+# Go
+set -gx GOPATH $HOME
+set -gx PATH $PATH $GOPATH/bin
 
 #Android SDK
 #set -gx PATH $PATH ~/Library/Android/sdk/platform-tools
