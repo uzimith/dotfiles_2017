@@ -1,7 +1,7 @@
-export XDG_CONFIG_HOME=$HOME/.config
-export LANG='ja_JP.UTF-8'
-export LC_ALL='ja_JP.UTF-8'
-export EDITOR=vim
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx LANG 'ja_JP.UTF-8'
+set -gx LC_ALL 'ja_JP.UTF-8'
+set -gx EDITOR vim
 
 ##
 # PATH
