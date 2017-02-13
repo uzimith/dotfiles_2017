@@ -1,5 +1,5 @@
 function fish_notify --on-event fish_prompt
-    set -l _display_status $status
+    set _display_status $status
     if test $CMD_DURATION
         set secs (math "$CMD_DURATION / 1000")
         if test $secs -ge 3
