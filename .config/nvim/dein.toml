@@ -220,9 +220,8 @@ depends = ['vim-textobj-user']
 [[plugins]]
 repo = 'airblade/vim-rooter'
 hook_add = '''
-noremap <silent> <unique> <Leader>vcd <Plug>RooterChangeToRootDirectory
-let g:rooter_patterns = ['.git', 'package.json', 'Rakefile', 'Gemfile', 'Gruntfile.js', 'codekit-config.json', 'config.rb']
-let g:rooter_change_directory_for_non_project_files = 1
+noremap <unique> <Leader>cd :<C-u>Rooter<CR>
+let g:rooter_change_directory_for_non_project_files = 'home'
 '''
 
 [[plugins]]
