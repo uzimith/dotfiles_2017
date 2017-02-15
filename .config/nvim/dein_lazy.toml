@@ -115,7 +115,9 @@ hook_source = '''
     \ }
   let g:neomake_go_enabled_makers = ['golint', 'govet', 'errcheck']
   au FileType go nmap <leader>gd <Plug>(go-def)
-  au FileType go nmap <leader>gt <Plug>(go-doc)
+  au FileType go nmap <leader>gt <Plug>(go-doc-tab)
+  au FileType go nmap <leader>gv <Plug>(go-doc-split)
+  au FileType go nmap <leader>go <Plug>(go-doc-browser)
 '''
 
 [[plugins]]
