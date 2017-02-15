@@ -17,18 +17,18 @@ bash setup.sh
 
 ## Now Using
 
+- fish
 - git
     - tig
 - tmux
     - tmuxinator
 - NeoVim
-- Vimperator
-- fish
-- peco
 - powerline
+- ghq
+- peco
 - XVim
-- eslint
-- ~/bin
+- CVim
+- Vimperator
 
 ## Application
 - [Karabiner](https://pqrs.org/osx/karabiner/)
@@ -45,6 +45,3 @@ bash setup.sh
     - Transmit
     - PopClip
     - Divvy
-
-### cvim
-https://gist.github.com/uzimith/fc1068e505b923f7d93dfc329df4ffc7
