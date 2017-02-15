@@ -28,4 +28,5 @@ brew 'ghq'
 brew 'go'
 brew 'hub'
 brew 'gh-open'
+brew 'ctags'
 brew 'sanemat/font/ricty', args: ['with-powerline']

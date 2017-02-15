@@ -168,7 +168,7 @@ hook_add = '''
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-let g:indent_guides_exclude_filetypes = ['help', 'vimfiler', 'unite']
+let g:indent_guides_exclude_filetypes = ['help', 'vimfiler', 'unite', 'go']
 '''
 
 [[plugins]]
@@ -220,7 +220,6 @@ depends = ['vim-textobj-user']
 [[plugins]]
 repo = 'airblade/vim-rooter'
 hook_add = '''
-noremap <unique> <Leader>cd :<C-u>Rooter<CR>
 let g:rooter_change_directory_for_non_project_files = 'home'
 '''
 
@@ -229,12 +228,8 @@ repo = 'neomake/neomake'
 hook_add = '''
 let g:neomake_logfile= expand('~/.cache/nvim/neomake.log')
 augroup neomake_run
-  " 保存時とenter時にlintする
   autocmd! BufWritePost,BufEnter * Neomake
-
-  " インサートモードを抜けた時もlint
-  autocmd! InsertLeave *.js Neomake 
-
+  " autocmd! InsertLeave *.js Neomake 
   " vim終了時にeslint_dを終了
   autocmd! VimLeave *.js  !eslint_d stop
 augroup END
@@ -302,3 +297,40 @@ repo = 'rizzatti/dash.vim''
 hook_add = '''
 nmap <silent> <leader>d <Plug>DashSearch
 '''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+nmap <Leader>tt :TagbarToggle<CR>
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+'''
+

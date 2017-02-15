@@ -1,5 +1,4 @@
 set autoindent   " 自動でインデント
-set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent      " Cプログラムファイルの自動インデントを始める
 set smarttab
 set expandtab
@@ -43,4 +42,3 @@ autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
 autocmd FileType markdown   setlocal sw=4 sts=4 ts=4 et
 autocmd FileType haskell    setlocal sw=2 sts=2 ts=2 et
 autocmd FileType rust       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType go         setlocal sw=4 sts=4 ts=4 et

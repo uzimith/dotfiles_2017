@@ -27,7 +27,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_snipmate_compatibility = 1
   let g:neosnippet#enable_snipmate_compatibility = 1
   let g:neosnippet#enable_completed_snippet = 1
   let g:neosnippet#expand_word_boundary = 1
@@ -106,6 +106,7 @@ repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_source = '''
   let g:go_fmt_command = 'goimports'
+  let g:go_fmt_fail_silently = 1
   let s:goargs = go#package#ImportPath(expand('%:p:h'))
   let g:neomake_go_errcheck_maker = {
     \ 'args': ['-abspath', s:goargs],
@@ -113,4 +114,13 @@ hook_source = '''
     \ 'errorformat': '%f:%l:%c:\ %m, %f:%l:%c\ %#%m',
     \ }
   let g:neomake_go_enabled_makers = ['golint', 'govet', 'errcheck']
+  au FileType go nmap <leader>gt <Plug>(go-def)
+  au FileType go nmap <leader>gd <Plug>(go-doc)
+'''
+
+[[plugins]]
+repo = 'jodosha/vim-godebug'
+on_ft = 'go'
+hook_source = '''
+ let g:go_term_enabled=1
 '''
