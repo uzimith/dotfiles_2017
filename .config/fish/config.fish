@@ -37,6 +37,10 @@ alias l='ll | peco'
 alias rgf='ripgrep_glob'
 alias prg='peco_ripgrep_vim'
 
+# docker
+alias d='docker'
+alias dc='docker-compose'
+
 # process
 alias j="jobs -l"
 alias pk='pkill -f'
