@@ -25,6 +25,10 @@ set -gx PATH $PATH $GOPATH/bin
 #set -gx PATH $PATH ~/Library/Android/sdk/tools
 #set -gx ANDROID_HOME $PATH ~/Library/Android/sdk
 
+# Google Cloud SDK
+set fish_user_paths /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+set -x MANPATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/help/man /usr/local/share/man /usr/share/man /opt/x11/share/man
+
 #rbenv
 rbenv init - | source
 

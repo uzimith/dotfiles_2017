@@ -6,6 +6,8 @@ fishd.*
 __*.fish
 .config/fish/functions/fisher.fish
 .config/hub
+.config/wireshark
+.config/gcloud
 .netrwhist
 
 # fisherman
