@@ -14,8 +14,8 @@ set -gx PATH /usr/local/bin $PATH
 #set -gx PATH $HOME/Library/Haskell/bin $PATH
 # nodebrew
 #set -gx PATH $HOME/.nodebrew/current/bin $PATH
-# ~/bin
-set -gx PATH $HOME/bin/ $PATH
+# my bin
+set -gx PATH $XDG_CONFIG_HOME/bin $PATH
 # Go
 set -gx GOPATH $HOME
 set -gx PATH $PATH $GOPATH/bin
