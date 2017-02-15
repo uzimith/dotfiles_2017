@@ -33,13 +33,6 @@ set guioptions+=a
 " クリップボードを共有
 set clipboard=unnamed
 
-" <Leader>lcd
-function! LcdCurrentBuffer()
-  let f = expand("$:p:h")
-  execute ":lcd" . expand("%:p:h")
-endfunction
-noremap <Leader>lcd :call LcdCurrentBuffer()<CR>
-
 " 他で書き換えられたら自動で読み直す
 set autoread
 augroup vimrc-checktime
